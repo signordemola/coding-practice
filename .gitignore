@@ -129,7 +129,7 @@ dist
 .vscode-test
 
 # pnpm
-.pnpm-store
+.pnpm-store/
 
 # yarn v3
 .pnp.*

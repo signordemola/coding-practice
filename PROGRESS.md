@@ -1,0 +1,47 @@
+# Progress
+
+Next: Priority track P0 (catch-up check on 11–20 + tsc output), then P1 (topics 4–5).
+Cycle: 1
+Last session: — (moved from scheduled lessons to Codex on 2026-11-19)
+
+## Topic status
+Statuses: Solid · Shaky · Not done · Taught (not checked yet)
+
+| # | Topic | Status | Notes |
+|---|---|---|---|
+| 1 | Values, types, equality, truthy/falsy | Solid | Contrast ?? with \|\| (\|\| also replaces 0, "", false). == null does not catch NaN. |
+| 2 | Scope: let/const/var, hoisting | Shaky | Items inside a const array/object can still change. var = function-scoped + hoisted. |
+| 3 | Closures | Shaky | A returned closure CAN be called outside; it keeps access to its outer variables. |
+| 4 | this, arrow functions, call/apply/bind | Not done | Reproduced the unbound-method error; still to fix it with bind and an arrow. |
+| 5 | Prototypes and classes | Not done | Prototype check still to do. |
+| 6 | Promises, async/await, errors | Shaky | Promise.all rejects on first failure; teach Promise.allSettled. |
+| 7 | Event loop | Solid | |
+| 8 | Arrays/objects, copies, immutability | Solid | |
+| 9 | What TypeScript is | Shaky | Types are erased at COMPILE time; TS does not run at runtime. |
+| 10 | tsc, tsconfig, strict | Not done | Show `npx tsc --noEmit --strict` output. |
+| 11 | Primitives, tuples, any/unknown/never/void | Taught | |
+| 12 | Inference vs annotations, widening | Taught | |
+| 13 | Literal, union, intersection types | Taught | |
+| 14 | Type aliases vs interfaces | Taught | Interview flagged: explain clearly. Priority P1. |
+| 15 | Object types: optional, readonly, index signatures | Taught | |
+| 16 | Functions, overloads | Taught | |
+| 17 | Narrowing | Taught | |
+| 18 | Discriminated unions, never | Taught | |
+| 19 | Type predicates, assertion functions | Taught | |
+| 20 | as, !, as const, satisfies | Taught | |
+| 22 | Classes | Not done | Priority P3. |
+| 23 | extends vs implements | Not done | Interview flagged: explain clearly. Priority P2. |
+| 82 | Webhooks and payments engineering | Not done | Interview flagged (Stripe, webhooks, idempotency). Priority P4. |
+
+## Open build tasks
+- lesson-01 deposit helper: Part 2 (fix the unbound method with bind and with an arrow function) and Part 3 (prototype check).
+- lesson-03 typed order checker and lesson-04 booking events handler: briefs given earlier; not yet in the repo. Codex may re-issue them.
+
+## Interview feedback to train against
+- Explain flows end to end with architecture detail: database schema, scheduling mechanism, email/payment provider integration.
+- Explain interface vs type and implements vs extends clearly.
+- Stripe/webhooks/idempotency questions came up in a coding interview.
+- Answers are too short: practise full spoken answers with one real example.
+
+## Notes
+- Facts verified 2026-11-16/18 (official docs): TS 6.0+ strict defaults true; Node 22.18+/23.6+ strips types by default (no type check, enums not supported); prefer interface by default, type when needed; satisfies checks without changing the inferred type; `as` and `!` have no runtime check.

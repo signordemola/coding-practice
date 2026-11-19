@@ -1,0 +1,3 @@
+# Project config for Codex in this repo.
+# "live" = Codex searches the current web (official docs), not a cached index.
+web_search = "live"

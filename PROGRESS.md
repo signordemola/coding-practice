@@ -1,8 +1,8 @@
 # Progress
 
-Next: Priority track P0 (catch-up check on 11–20 + tsc output), then P1 (topics 4–5).
+Next: Warm up topics 12–13, then continue Priority track P0 with topic 14: type aliases versus interfaces.
 Cycle: 1
-Last session: — (moved from scheduled lessons to Codex on 2026-11-19)
+Last session: 2026-11-20 — P0 refresh for topics 11–13; lesson-03 assigned.
 
 ## Topic status
 Statuses: Solid · Shaky · Not done · Taught (not checked yet)
@@ -18,10 +18,10 @@ Statuses: Solid · Shaky · Not done · Taught (not checked yet)
 | 7 | Event loop | Solid | |
 | 8 | Arrays/objects, copies, immutability | Solid | |
 | 9 | What TypeScript is | Shaky | Types are erased at COMPILE time; TS does not run at runtime. |
-| 10 | tsc, tsconfig, strict | Not done | Show `npx tsc --noEmit --strict` output. |
-| 11 | Primitives, tuples, any/unknown/never/void | Taught | |
-| 12 | Inference vs annotations, widening | Taught | |
-| 13 | Literal, union, intersection types | Taught | |
+| 10 | tsc, tsconfig, strict | Not done | `pnpm exec tsc --noEmit --strict` passed for lesson-01. Re-test why strict matters. |
+| 11 | Primitives, tuples, any/unknown/never/void | Shaky | Unknown validation and tuples were Solid. Re-test void, never, null, and undefined. |
+| 12 | Inference vs annotations, widening | Shaky | Understands a const binding can hold a mutable object. Re-test widening and explicit annotations. |
+| 13 | Literal, union, intersection types | Shaky | Understands status unions and paid-booking intersections. Re-test why unions are safer than string. |
 | 14 | Type aliases vs interfaces | Taught | Interview flagged: explain clearly. Priority P1. |
 | 15 | Object types: optional, readonly, index signatures | Taught | |
 | 16 | Functions, overloads | Taught | |
@@ -35,7 +35,7 @@ Statuses: Solid · Shaky · Not done · Taught (not checked yet)
 
 ## Open build tasks
 - lesson-01 deposit helper: Part 2 (fix the unbound method with bind and with an arrow function) and Part 3 (prototype check).
-- lesson-03 typed order checker and lesson-04 booking events handler: briefs given earlier; not yet in the repo. Codex may re-issue them.
+- lesson-04 booking events handler: brief given earlier; not yet in the repo. Codex may re-issue it.
 
 ## Interview feedback to train against
 - Explain flows end to end with architecture detail: database schema, scheduling mechanism, email/payment provider integration.

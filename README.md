@@ -8,6 +8,7 @@ Small TypeScript exercises. Each lesson is one folder with one file that prints 
 | --- | --- | --- |
 | 01 | [`lesson-01/deposit.ts`](lesson-01/deposit.ts) | Closures, input validation, classes, and how a detached method loses `this` |
 | 02 | [`lesson-02/fetch-bookings.ts`](lesson-02/fetch-bookings.ts) | Event loop order, promises, `async`/`await`, `Promise.all`, `filter`/`map`/`reduce`, shallow copy and `structuredClone` |
+| 03 | [`lesson-03/booking-payload.ts`](lesson-03/booking-payload.ts) | `unknown`, runtime validation, tuples, literal unions, and intersections |
 
 The examples use booking data: prices, deposits and balances.
 
@@ -33,7 +34,7 @@ pnpm install
 
 ## Status
 
-Two lessons so far. More will be added.
+Three completed lessons. More will be added.
 
 ---
 

@@ -1,6 +1,6 @@
 # Progress
 
-Next: Continue Priority track P0 with topic 15, one object property concept at a time.
+Next: Continue Priority track P0 with topic 16: functions, one concept at a time.
 Cycle: 1
 Last session: 2026-11-20 — P0 refresh for topics 11–13; lesson-03 assigned.
 
@@ -23,7 +23,7 @@ Statuses: Solid · Shaky · Not done · Taught (not checked yet)
 | 12 | Inference vs annotations, widening | Shaky | Understands a const binding can hold a mutable object. Re-test widening and explicit annotations. |
 | 13 | Literal, union, intersection types | Shaky | Understands status unions and paid-booking intersections. Re-test why unions are safer than string. |
 | 14 | Type aliases vs interfaces | Solid | Uses `type` for unions and tuples; uses `interface` for object shapes; understands `extends` and declaration merging. |
-| 15 | Object types: optional, readonly, index signatures | Taught | |
+| 15 | Object types: optional, readonly, index signatures | Solid | Understands optional and readonly properties, flexible metadata with unknown, excess-property checks, and that compile-time checks do not validate runtime JSON. |
 | 16 | Functions, overloads | Taught | |
 | 17 | Narrowing | Taught | |
 | 18 | Discriminated unions, never | Taught | |

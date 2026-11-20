@@ -1,6 +1,6 @@
 # Progress
 
-Next: Warm up topics 12–13, then continue Priority track P0 with topic 14: type aliases versus interfaces.
+Next: Continue Priority track P0 with topic 15, one object property concept at a time.
 Cycle: 1
 Last session: 2026-11-20 — P0 refresh for topics 11–13; lesson-03 assigned.
 
@@ -22,7 +22,7 @@ Statuses: Solid · Shaky · Not done · Taught (not checked yet)
 | 11 | Primitives, tuples, any/unknown/never/void | Shaky | Unknown validation and tuples were Solid. Re-test void, never, null, and undefined. |
 | 12 | Inference vs annotations, widening | Shaky | Understands a const binding can hold a mutable object. Re-test widening and explicit annotations. |
 | 13 | Literal, union, intersection types | Shaky | Understands status unions and paid-booking intersections. Re-test why unions are safer than string. |
-| 14 | Type aliases vs interfaces | Taught | Interview flagged: explain clearly. Priority P1. |
+| 14 | Type aliases vs interfaces | Solid | Uses `type` for unions and tuples; uses `interface` for object shapes; understands `extends` and declaration merging. |
 | 15 | Object types: optional, readonly, index signatures | Taught | |
 | 16 | Functions, overloads | Taught | |
 | 17 | Narrowing | Taught | |

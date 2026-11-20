@@ -1,14 +1,13 @@
 # coding-practice
 
-Small TypeScript exercises. Each lesson is one folder with one file that prints its results.
+Small TypeScript exercises. Each numbered folder maps to a syllabus stage and can contain multiple exercise files.
 
 ## Lessons
 
-| Lesson | File | Topics |
+| Folder | Stage | Exercises and current coverage |
 | --- | --- | --- |
-| 01 | [`lesson-01/deposit.ts`](lesson-01/deposit.ts) | Closures, input validation, classes, and how a detached method loses `this` |
-| 02 | [`lesson-02/fetch-bookings.ts`](lesson-02/fetch-bookings.ts) | Event loop order, promises, `async`/`await`, `Promise.all`, `filter`/`map`/`reduce`, shallow copy and `structuredClone` |
-| 03 | [`lesson-03/booking-payload.ts`](lesson-03/booking-payload.ts) | `unknown`, runtime validation, tuples, literal unions, and intersections |
+| 01 | Stage 1 | [`deposit.ts`](lesson-01/deposit.ts), [`fetch-bookings.ts`](lesson-01/fetch-bookings.ts), [`event-loop.ts`](lesson-01/event-loop.ts), [`TASK.md`](lesson-01/TASK.md). Covers parts of topics 3, 4, and 6–8. The task fills gaps in topics 1, 2, 4, 5, and 6. |
+| 02 | Stage 2 | [`booking-payload.ts`](lesson-02/booking-payload.ts), [`booking-functions.ts`](lesson-02/booking-functions.ts), [`stage-2-coverage.md`](lesson-02/stage-2-coverage.md). Coverage and gaps are listed in the stage map. |
 
 The examples use booking data: prices, deposits and balances.
 
@@ -16,25 +15,31 @@ The examples use booking data: prices, deposits and balances.
 
 You need Node.js 24 or later. It runs TypeScript files directly.
 
-```bash
-cd lesson-01
-node deposit.ts
-```
-
-```bash
-cd lesson-02
-node fetch-bookings.ts
-```
-
-To use the TypeScript compiler in a lesson, install its packages first:
+Install the shared tools once from the repository root:
 
 ```bash
 pnpm install
 ```
 
+Run a lesson from the repository root:
+
+```bash
+node lesson-01/deposit.ts
+node lesson-01/event-loop.ts
+node lesson-01/fetch-bookings.ts
+node lesson-02/booking-payload.ts
+node lesson-02/booking-functions.ts
+```
+
+Type-check a lesson from the repository root:
+
+```bash
+pnpm exec tsc --noEmit --strict lesson-02/booking-functions.ts
+```
+
 ## Status
 
-Three completed lessons. More will be added.
+Stage 1 and Stage 2 are in progress.
 
 ---
 

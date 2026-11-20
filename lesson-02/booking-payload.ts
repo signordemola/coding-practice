@@ -16,7 +16,7 @@ const payloads: unknown[] = [
   { id: 104, status: "paid", deposit: 90 },
 ];
 
-const isBooking = (value: unknown): value is Booking => { 
+const isBooking = (value: unknown): value is Booking => {
   if (typeof value !== "object" || value === null || Array.isArray(value)) {
     return false;
   }
@@ -25,22 +25,27 @@ const isBooking = (value: unknown): value is Booking => {
     return false;
   }
 
-  if (typeof value.id !== "string" || typeof value.deposit !== "number" || (value.status !== "pending" && value.status !== "paid")) {
+  if (
+    typeof value.id !== "string" ||
+    typeof value.deposit !== "number" ||
+    (value.status !== "pending" && value.status !== "paid")
+  ) {
     return false;
   }
 
   if (value.deposit < 0 || !Number.isFinite(value.deposit)) {
     return false;
   }
-  
+
   return true;
-}
+};
 
 const describeBooking = (booking: unknown): string => {
   if (!isBooking(booking)) {
     return "Invalid booking payload";
   }
-  return `Booking ${booking.id}: ${booking.status}, deposit ${booking.deposit.toFixed(2)}` }
+  return `Booking ${booking.id}: ${booking.status}, deposit ${booking.deposit.toFixed(2)}`;
+};
 
 const printPayloads = (values: unknown[]): void => {
   for (const value of values) {

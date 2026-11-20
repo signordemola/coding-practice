@@ -1,4 +1,4 @@
-# Lesson 03: booking payload validator
+# Stage 2 practice: booking payload validator
 
 The starter program contains unsafe validation. It starts, prints the first booking, then fails when it reaches invalid data.
 
@@ -27,8 +27,7 @@ Slot duration: 60 minutes
 ## Verify
 
 ```bash
-cd lesson-03
 pnpm install
-pnpm exec tsc --noEmit --strict booking-payload.ts
-node booking-payload.ts
+pnpm exec tsc --noEmit --strict lesson-02/booking-payload.ts
+node lesson-02/booking-payload.ts
 ```

@@ -1,8 +1,8 @@
 # Progress
 
-Next: Continue Priority track P0 with topic 16: functions, one concept at a time.
+Next: Continue topic 16 with caller-focused examples, one concept at a time.
 Cycle: 1
-Last session: 2026-11-20 — P0 refresh for topics 11–13; lesson-03 assigned.
+Last session: 2026-11-20 — P0 refresh for topics 11–13; topic 16 taught and its practice moved to lesson-02 (Stage 2).
 
 ## Topic status
 Statuses: Solid · Shaky · Not done · Taught (not checked yet)
@@ -20,11 +20,11 @@ Statuses: Solid · Shaky · Not done · Taught (not checked yet)
 | 9 | What TypeScript is | Shaky | Types are erased at COMPILE time; TS does not run at runtime. |
 | 10 | tsc, tsconfig, strict | Not done | `pnpm exec tsc --noEmit --strict` passed for lesson-01. Re-test why strict matters. |
 | 11 | Primitives, tuples, any/unknown/never/void | Shaky | Unknown validation and tuples were Solid. Re-test void, never, null, and undefined. |
-| 12 | Inference vs annotations, widening | Shaky | Understands a const binding can hold a mutable object. Re-test widening and explicit annotations. |
-| 13 | Literal, union, intersection types | Shaky | Understands status unions and paid-booking intersections. Re-test why unions are safer than string. |
+| 12 | Inference vs annotations, widening | Solid | Correctly explained that an object property on a const binding can widen to string and that a union narrows the allowed values. |
+| 13 | Literal, union, intersection types | Solid | Correctly explained that a union limits choices and that an intersection requires fields from both types. |
 | 14 | Type aliases vs interfaces | Solid | Uses `type` for unions and tuples; uses `interface` for object shapes; understands `extends` and declaration merging. |
 | 15 | Object types: optional, readonly, index signatures | Solid | Understands optional and readonly properties, flexible metadata with unknown, excess-property checks, and that compile-time checks do not validate runtime JSON. |
-| 16 | Functions, overloads | Taught | |
+| 16 | Functions, overloads | Shaky | Understands numeric parameter and return types, defaults, rest parameters, and why a union can be simpler. Re-test function contracts, `null` vs `undefined`, and when overloads help. |
 | 17 | Narrowing | Taught | |
 | 18 | Discriminated unions, never | Taught | |
 | 19 | Type predicates, assertion functions | Taught | |
@@ -34,8 +34,8 @@ Statuses: Solid · Shaky · Not done · Taught (not checked yet)
 | 82 | Webhooks and payments engineering | Not done | Interview flagged (Stripe, webhooks, idempotency). Priority P4. |
 
 ## Open build tasks
-- lesson-01 deposit helper: Part 2 (fix the unbound method with bind and with an arrow function) and Part 3 (prototype check).
-- lesson-04 booking events handler: brief given earlier; not yet in the repo. Codex may re-issue it.
+- lesson-01 Stage 1 gaps: complete the values/scope exercise, bind and prototype work, and `Promise.allSettled` practice in `lesson-01/TASK.md`.
+- lesson-06 booking events handler: an earlier brief was not saved in the repo; re-issue it when Stage 6 is next.
 
 ## Interview feedback to train against
 - Explain flows end to end with architecture detail: database schema, scheduling mechanism, email/payment provider integration.

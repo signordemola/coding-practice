@@ -7,9 +7,9 @@ Interview feedback: explain flows end to end with architecture detail (schema, s
 - P0. Catch-up check on topics 11–20 (taught, never checked): short re-explain + questions. Also show `pnpm exec tsc --noEmit --strict` output (topic 10).
 - P1. Topics 4 and 5: `this`, call/apply/bind, prototypes (finish lesson-01 Parts 2–3). Needed before classes.
 - P2. Topic 14: type aliases vs interfaces (declaration merging, unions, when to use which).
-- P3. Topic 22: classes (access modifiers, readonly, parameter properties, abstract classes).
-- P4. Topic 23: extends vs implements, inheritance vs composition.
-- P5. Topic 82: webhooks and payments with Stripe: PaymentIntent vs Checkout Session, SetupIntent + off-session charge for balances, webhook signature verification (raw body), idempotency keys, storing processed event IDs, retries and duplicate/out-of-order events, refunds, testing with the Stripe CLI.
+- P3. Topic 82: Stripe webhooks and payment state. Cover signature verification on the raw body, idempotency, storing processed event IDs with a unique constraint, duplicate and out-of-order events, concurrent deliveries and race conditions, transactional payment-state updates, retries, refunds, reconciliation, and Stripe CLI testing. Move this ahead of classes and inheritance due to interview feedback. Build `lesson-06/stripe-webhook.ts` with its matching `stripe-webhook-TASK.md`: process duplicate and concurrent events safely, then prove one payment-state transition is recorded.
+- P4. Topic 22: classes (access modifiers, readonly, parameter properties, abstract classes).
+- P5. Topic 23: extends vs implements, inheritance vs composition.
 - P6. Topic 64: REST API design (idempotency, status codes, pagination, errors).
 - P7. Topic 77: background jobs and scheduled work (reminders, emails), queues, retries with backoff.
 - P8. Topics 70–72: keys, joins, transactions, unique constraints, indexes, N+1.
@@ -17,6 +17,11 @@ Interview feedback: explain flows end to end with architecture detail (schema, s
 - P10. Topic 83: dates and time zones (booking slots, DST).
 - P11. Topics 120–121: system design method + "design a booking system for many businesses" (double-booking prevention, slot holds, race conditions).
 - P12. Practice: explain 3 end-to-end flows out loud (booking -> deposit -> reminder -> invoice) using Trigger -> Data -> Processing -> External -> Failure -> Trade-off.
+- P13. UI interaction rules (topics 45, 53, and 55): truncation, wrapping, empty/loading/error states, and documenting assumptions with annotations and checklists before building. Build `lesson-05/booking-ui-states.ts` with `booking-ui-states-TASK.md`: model a booking list with long service names and all loading, empty, and error states; write the assumptions checklist first.
+- P14. Stacking context (topics 42 and 46): what creates a context (`transform`, `opacity`, `position`, `z-index`) and how to debug layers and animations in DevTools. Build `lesson-05/booking-overlay.ts` with `booking-overlay-TASK.md`: create a booking/payment overlay and diagnose why its confirmation layer appears behind another layer.
+- P15. State architecture (topic 50): local state vs lifted state vs a global store vs a state machine, and when to choose each. Build `lesson-05/booking-state-architecture.ts` with `booking-state-architecture-TASK.md`: model a booking reschedule and checkout flow, choose a state approach, and explain the trade-off.
+- P16. React re-renders and memoization (topic 51): render triggers, `memo`, `useMemo`, `useCallback`, referential equality, and when not to memoise. Build `lesson-05/booking-dashboard-renders.ts` with `booking-dashboard-renders-TASK.md`: trace updates in a booking dashboard, identify unnecessary renders, and justify each memoization choice.
+- P17. Code review judgment (topics 94 and 97): when to request a change or leave a comment; overused `useEffect`; when to extract a custom hook. Build `lesson-05/booking-component-review.ts` with `booking-component-review-TASK.md`: review a booking editor, separate required changes from comments, then fix only the required issues.
 After the priority track, continue the stages below in order from topic 6, skipping topics already Solid.
 
 ## Stage 1 — JavaScript core under TypeScript

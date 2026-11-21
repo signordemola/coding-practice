@@ -1,6 +1,6 @@
 # Progress
 
-Next session: the syllabus was rebuilt on 2026-11-21 (tracks, Path, Track R). Start Phase 1: teach B1 (three kinds of time) and B2, with Track A check of A17 (narrowing). Review queue: A16. Track R this week: R1 (reading an unfamiliar codebase) with the first code-reading drill, and the first bug hunt (time bug). Still open from before: `lesson-01/TASK.md` (A4–A6 gaps).
+Next session: start Track B with `lesson-b-time/`. Order: Part 0 (predict.ts) → B1–B2 taught PRIMM-style → slots Parts 1–2. Track A: check A17 (narrowing). Review queue: A16, A11. Track R this week: the `booking-window` bug hunt, then R1 with the first code-reading drill. Still open: `lesson-01/a1-a8-gaps-TASK.md`.
 Cycle: 1
 Last session: 2026-11-20 — P0 refresh for topics 11–13; topic 16 taught and its practice moved to lesson-02 (Stage 2).
 
@@ -43,6 +43,16 @@ Re-test from memory on or after the date. Gaps: about 1 → 3 → 7 → 21 days;
 | A11 | next session | Shaky |
 | A2, A3, A6, A9 | within the first week | Shaky |
 
+## Level check (see Levels in `SYLLABUS.md`; updated at each weekly review)
+Current level: working towards Level 1.
+| Date | Evidence for the next level | Gaps |
+|---|---|---|
+| 2026-11-21 | One open-source PR opened (calendar library). | No exercises yet under the new hint rules; spoken answers not yet scored. |
+
+## Help log (deepest hint rung used per exercise; it should go down over time)
+| Date | Exercise | Deepest rung (0 = none, 5 = key line shown) | Time taken | Notes |
+|---|---|---|---|---|
+
 ## Real-app drills
 Practice questions from `real-apps/`. Grade each spoken answer.
 
@@ -57,9 +67,11 @@ Practice questions from `real-apps/`. Grade each spoken answer.
 | 2026-11-21 | OSS issue | Calendar library: custom event modal didn't reposition when its size changed | PR opened | Fixed with a ResizeObserver; 3 tests added. Waiting for maintainer review. |
 
 ## Open build tasks
-- lesson-01 Stage 1 gaps: complete the values/scope exercise, bind and prototype work, and `Promise.allSettled` practice in `lesson-01/TASK.md`.
+- lesson-01 Stage 1 gaps: complete the values/scope exercise, bind and prototype work, and `Promise.allSettled` practice in `lesson-01/a1-a8-gaps-TASK.md`.
 - lesson-02 booking events handler: the earlier brief was not saved in the repo; re-issue it for A18–A20.
-- `lesson-b-time/`: slot generation across zones and a DST change (date-fns, then Temporal).
+- `lesson-b-time/slots-TASK.md`: Parts 0–5 (ready, tests written).
+- `lesson-b-time/booking-window-TASK.md`: bug hunt, two tickets (ready).
+- Later in Track B: rebuild `slots` with Temporal and compare (B7).
 - `lesson-e-payments/`: webhook handler for duplicate, out-of-order and concurrent events (when E2 begins).
 - `lesson-i-frontend/`: the five frontend exercises for I5–I8 (when Track I begins).
 

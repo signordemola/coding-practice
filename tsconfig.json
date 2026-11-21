@@ -1,0 +1,30 @@
+{
+  // One strict config for every lesson. Node runs .ts files directly (type stripping),
+  // so tsc only type-checks: it never emits JavaScript.
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "types": ["node"],
+    "noEmit": true,
+
+    // Node strips types instead of compiling, so only erasable syntax is allowed
+    // (no enums, namespaces or constructor parameter properties).
+    "erasableSyntaxOnly": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+
+    // Strictness: production-level type safety.
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "skipLibCheck": true
+  },
+  "include": ["lesson-*/**/*.ts"]
+}

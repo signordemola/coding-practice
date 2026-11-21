@@ -6,36 +6,26 @@ TypeScript practice for understanding real-world apps: time zones, payments, con
 
 | Folder | Track | Exercises and current coverage |
 | --- | --- | --- |
-| 01 | A: JavaScript core | [`deposit.ts`](lesson-01/deposit.ts), [`fetch-bookings.ts`](lesson-01/fetch-bookings.ts), [`event-loop.ts`](lesson-01/event-loop.ts), [`TASK.md`](lesson-01/TASK.md). Covers parts of topics 3, 4, and 6–8. The task fills gaps in topics 1, 2, 4, 5, and 6. |
-| 02 | A: TypeScript basics | [`booking-payload.ts`](lesson-02/booking-payload.ts), [`booking-functions.ts`](lesson-02/booking-functions.ts), [`stage-2-coverage.md`](lesson-02/stage-2-coverage.md). Coverage and gaps are listed in the stage map. |
+| 01 | A: JavaScript core | [`deposit.ts`](lesson-01/deposit.ts), [`fetch-bookings.ts`](lesson-01/fetch-bookings.ts), [`event-loop.ts`](lesson-01/event-loop.ts), [`a1-a8-gaps-TASK.md`](lesson-01/a1-a8-gaps-TASK.md). Covers parts of A3, A4 and A6–A8. The task fills gaps in A1, A2, A4, A5 and A6. |
+| 02 | A: TypeScript basics | [`booking-payload.ts`](lesson-02/booking-payload.ts), [`booking-functions.ts`](lesson-02/booking-functions.ts), [`coverage.md`](lesson-02/coverage.md). Coverage and gaps for A9–A23. |
+| b-time | B: Time | [`predict.ts`](lesson-b-time/predict.ts), [`slots`](lesson-b-time/slots-TASK.md) (build: slots across zones, buffers, validation, DST), [`booking-window`](lesson-b-time/booking-window-TASK.md) (bug hunt). Tests in `*.test.ts`. |
 
 The examples use booking data: prices, deposits and balances.
 
-## Run a lesson
+## Run the lessons
 
-You need Node.js 24 or later. It runs TypeScript files directly.
-
-Install the shared tools once from the repository root:
+You need Node.js 26 or later (it runs TypeScript files directly and has Temporal built in) and pnpm.
 
 ```bash
-pnpm install
+pnpm install          # once
+pnpm typecheck        # strict type-check of every lesson (tsc, no output files)
+pnpm test             # every *.test.ts with Node's built-in test runner
+pnpm check            # both
+node --test lesson-b-time/slots.test.ts   # one exercise
+node lesson-01/deposit.ts                 # run a file
 ```
 
-Run a lesson from the repository root:
-
-```bash
-node lesson-01/deposit.ts
-node lesson-01/event-loop.ts
-node lesson-01/fetch-bookings.ts
-node lesson-02/booking-payload.ts
-node lesson-02/booking-functions.ts
-```
-
-Type-check a lesson from the repository root:
-
-```bash
-pnpm exec tsc --noEmit --strict lesson-02/booking-functions.ts
-```
+Build exercises mark unfinished parts as `todo`, so they're reported without failing the run. GitHub runs `pnpm check` on every push.
 
 ## Status
 

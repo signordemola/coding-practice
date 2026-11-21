@@ -1,6 +1,6 @@
-# Stage 1: fill the practice gaps
+# Track A (A1–A8): fill the practice gaps
 
-The files in this folder cover closures, promises, the event loop, and arrays. This task adds practice for the missing parts of Stage 1.
+The files in this folder cover closures, promises, the event loop, and arrays. This task adds practice for the missing parts of A1–A8.
 
 ## Requirements
 

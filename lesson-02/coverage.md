@@ -1,8 +1,8 @@
-# Stage 2 coverage
+# Track A coverage (A9–A23)
 
-Stage 2 covers syllabus topics 9–23. These notes describe the current exercises. They do not mark a topic Solid.
+This folder covers Track A modules A9–A23 (the numbers match the old topic numbers). These notes describe the current exercises. They do not mark a topic Solid.
 
-| Topic | Current exercise coverage |
+| Module | Current exercise coverage |
 | --- | --- |
 | 9–10 | The root TypeScript setup and `tsconfig.json` files exist. There is no dedicated exercise yet. |
 | 11 | `booking-payload.ts` uses `unknown` and a tuple. Primitive types, `any`, `never`, `void`, `null`, and `undefined` need more practice. |
@@ -19,4 +19,4 @@ Stage 2 covers syllabus topics 9–23. These notes describe the current exercise
 | 22 | A basic class appears in the Stage 1 `this` example. Stage 2 class features need a dedicated exercise. |
 | 23 | `extends` versus `implements` needs an exercise. |
 
-The Priority track still controls teaching order. It asks for the P0 catch-up on topics 11–20 before the later Stage 2 topics.
+Teaching order comes from the Path in `SYLLABUS.md`.

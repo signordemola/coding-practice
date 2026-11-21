@@ -4,21 +4,36 @@ Goal: become an engineer who can **understand a real app, find its edge cases, d
 
 Theory serves practice. Track R (real-world debugging and open source) is the backbone: it runs every week from the first week, and every other track feeds it.
 
+## The goal, in my words (the north star: never drift from this)
+I want to become an advanced, expert developer: someone who understands real-world apps, finds edge cases, debugs and fixes real bugs (like in open-source projects), writes production-ready code, and can talk about all of it confidently. The AI's job is to make me do the thinking, not to do it for me.
+
+### Levels (how we know I'm getting there)
+Progress is measured by what I can do **unaided**, not by topics covered. Codex checks these at every weekly review and records them in `PROGRESS.md`.
+| Level | I can… | Evidence |
+|---|---|---|
+| 1. Solid | Build a feature from a task brief to passing tests with production-ready checks; fix planted bugs with a failing test first; explain my own two apps end to end. | Most exercises done at hint rung 0–2; spoken answers average 5/7 or more. |
+| 2. Strong | Read an unfamiliar open-source codebase, reproduce and fix a real issue, and get it reviewed; design a booking system or feed out loud, including failure modes and trade-offs. | Merged open-source PRs in my domain; bug hunts solved unaided within 25 minutes; system-design answers scoring 6/7. |
+| 3. Advanced / expert | Find bugs nobody planted (in open source, my apps, or code I review); spot time, concurrency, payment and security problems in other people's code; teach a topic clearly in writing. | Bugs I found and reported or fixed myself; code reviews that catch real problems; public write-ups of fixes. |
+
+## How I learn here: I do the thinking
+AI tutors help when they make the learner think and hurt when they do the work (see "Why this design" at the bottom). So Codex never writes my solutions or fixes, never debugs for me, and gives hints one rung at a time (`AGENTS.md` sections 1–2). I write the code, I debug it, I explain it.
+
+**Time split across a week:** about 40% writing code · 35% debugging and fixing · 15% reading and predicting code · 10% explaining out loud. Tests are the referee, not the main activity: Codex writes the tests that define "done"; I write tests only to reproduce a bug before fixing it and for edge cases I spot myself.
+
 ## The learning loop (every module)
+1. **Explain first**: I say what I already know about the idea. Codex corrects gaps.
+2. **Predict → Run → Investigate** (PRIMM): I predict what given code does, run it, then trace and explain the differences. New ideas get a short explanation with the official docs link.
+3. **Modify → Make**: I change working code, then build the exercise: `<name>.ts` + `<name>.test.ts` + `<name>-TASK.md`, in ordered parts with tests marked `todo` until I start each part. The last part is always my own edge cases.
+4. **Break and fix**: a bug hunt in the same area: reproduce with a failing test, root cause in one sentence, smallest fix.
+5. **Speak**: one interview question out loud, scored 0–7: Trigger → Data → Processing → External → Failure → Trade-off (or the bug-story order).
+6. **Review later**: re-tested from memory after about 1, 3, 7 and 21 days (`PROGRESS.md` review queue).
 
-Built on study methods with strong research support: retrieval practice, spaced practice, interleaving, self-explanation and concrete examples.
+Each session mixes topics (interleaving): one main module from the Path, one Track A module, the review queue, one real-app question.
 
-1. **Learn**: the idea in plain English, then the current official docs (see `AGENTS.md` for sources).
-2. **Explain back**: I explain it in my own words before seeing more examples. Codex corrects gaps.
-3. **Build**: a small exercise using a booking or community-app example.
-4. **Break**: find the bug, race or edge case in a given snippet (or in my own build).
-5. **Speak**: answer one interview question out loud in full sentences, using my real apps: Trigger → Data → Processing → External → Failure → Trade-off.
-6. **Review later**: the module goes into the review queue in `PROGRESS.md` and gets re-tested from memory after about 1, 3, 7 and 21 days.
-
-Each session mixes topics (interleaving): one main module from the Path, one Track A fundamentals module, the review queue, and one real-app question.
+**Production-ready standard for every build** (checklist in `AGENTS.md` section 7): validated input, tested failure paths, safe retries and duplicates, timeouts, money in cents, explicit time zones, no secrets, clear names and types.
 
 ### Weekly practice rhythm (Track R)
-- **2 bug hunts**: Codex writes a small, realistic file (booking, payments, feed, auth) with 1–3 planted bugs from the bug classes in `real-apps/`. I get 20 minutes with no hints: reproduce, write a failing test, fix, explain.
+- **2 bug hunts**: Codex writes a small, realistic file (booking, payments, feed, auth) with 1–3 planted bugs from the bug classes in `real-apps/`. I get 25 minutes before any hint: reproduce, write a failing test, fix, explain.
 - **1 code-reading drill**: one flow from a real open-source repo (see R7), for example the Stripe webhook handler in `nextjs/saas-starter` or the booking-creation path in `calcom/cal.diy`. Trace it from the click or request to the database write, then write one page: what it does, what it assumes, and which failures it handles vs ignores (two requests at once, duplicate webhook, failure after the first write, job retry after partial success, runtime time limit, dropped connection).
 - **1 postmortem or bug write-up**: a 5-line summary: trigger, root cause, fix, lesson, where the same bug could happen in my apps.
 - **Every 2–3 weeks: one real open-source issue**: reproduce it; if it's fresh and nobody's on it, fix it and open a PR myself.
@@ -84,7 +99,7 @@ Why: one app books appointments across zones; the other shows "3 hours ago", mon
 - B6 **date-fns + `@date-fns/tz`** (what my booking app uses): TZDate, building slots in the studio zone, formatting back.
 - B7 **Temporal**: Instant, ZonedDateTime, PlainDate, PlainYearMonth, Duration, and the disambiguation options for DST. Compare each with how my apps do it today. Check current browser and Node support before stating it.
 - B8 **Storing and showing time**: Postgres `timestamp` vs `timestamptz`, the session time zone, `interval '1 day'` vs 24 hours; `Intl.DateTimeFormat` and relative time; server vs browser rendering (hydration mismatches); cached pages that freeze "minutes ago".
-- Build (`lesson-b-time/`): generate available slots for a business in one zone viewed from another, across a DST change, with buffers and overlap checks. Then rebuild the same function with Temporal and compare.
+- Exercises ready in `lesson-b-time/`: `predict.ts` (Part 0 of the slots task), `slots` (build: slots across zones, buffers, notice, validation, DST days) and `booking-window` (bug hunt: two support tickets). Next: rebuild `slots` with Temporal and compare (B7).
 - Speak: "Where does an appointment time live and what does the column mean?" · "What breaks on a DST change?" · "Why is a month stored as a date, not a timestamp?"
 
 ## Track C: Data correctness in Postgres
@@ -163,11 +178,13 @@ Why: double clicks, retries, two tabs and webhook redeliveries hit both apps.
 - J4 **Anonymous display vs real ownership**: hiding the author while keeping moderation, rate limits and "no self-votes".
 
 ## Track K: Testing
-- K1 What to test where: unit, integration, end-to-end (Playwright).
+- K1 What to test where: unit, integration, end-to-end (Playwright). This repo uses Node's built-in runner (`node:test`).
 - K2 Testing time: fake clocks, DST and month-boundary cases.
 - K3 Testing concurrency: firing parallel requests at the same slot or key.
 - K4 Testing payments and webhooks: Stripe CLI, replaying events.
 - K5 Adding tests to an app that has none: where to start for the most safety.
+- K6 Property-based testing with fast-check: generate many inputs to find edge cases (time, money), and its race-condition mode for async code. Add the library when this module starts.
+- Note for Track C: race conditions need a real Postgres (Docker or Postgres.app). An in-process Postgres such as PGlite runs one connection at a time, so races never appear. Set it up when Track C starts.
 
 ## Track L: Web and platform fundamentals (pull in when needed)
 DNS and hosting · HTTP methods, status codes, headers · HTTPS/TLS · how browsers render · CORS · REST API design and error shapes · request lifecycle and middleware · edge runtimes (Workers) vs Node servers · Docker, CI/CD, config and secrets · observability (logs, metrics, traces).
@@ -192,3 +209,12 @@ How LLMs work · prompting · structured outputs and tool calling · embeddings 
 - Resend keeps idempotency keys for 24 hours. Source: resend.com/docs.
 - Inngest retries a step 4 times after the first attempt by default. Source: inngest.com/docs.
 - Cloudflare `waitUntil` can extend work for up to 30 seconds after the response. Source: developers.cloudflare.com/workers.
+
+## Why this design (sources)
+- AI that writes code for you lowers mastery, most of all for debugging; using AI to ask conceptual questions while coding yourself keeps learning high. Anthropic, "How AI assistance impacts the formation of coding skills" (2026): anthropic.com/research/AI-assistance-coding-skills
+- An unrestricted AI tutor works like a crutch; a tutor with guardrails avoids the drop. Bastani et al., PNAS 2025, "Generative AI without guardrails can harm learning".
+- A tutor that gives one step at a time, asks the learner to try first and keeps replies short doubled learning gains. Kestin et al., Scientific Reports 2025, "AI tutoring outperforms in-class active learning". Structure had to come from the platform, not the prompt alone.
+- Trying problems before instruction (productive failure) beats instruction first when the learner has prior knowledge. Sinha & Kapur, Review of Educational Research 2021.
+- Predict → Run → Investigate → Modify → Make (PRIMM). Sentance, Waite & Kallia 2019.
+- Too much worked-example guidance hurts experienced learners (expertise reversal), so support fades fast.
+- Retrieval, spacing, interleaving and self-explanation: Dunlosky et al. 2013 and Weinstein et al. 2018.

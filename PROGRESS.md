@@ -1,6 +1,6 @@
 # Progress
 
-Next: Continue topic 16 with caller-focused examples, one concept at a time.
+Next session: check topics 17–20, then complete `lesson-01/TASK.md` (this, bind, prototypes, and `Promise.allSettled`). After that, teach topic 22, then topic 23, then topic 82.
 Cycle: 1
 Last session: 2026-11-20 — P0 refresh for topics 11–13; topic 16 taught and its practice moved to lesson-02 (Stage 2).
 
@@ -30,12 +30,12 @@ Statuses: Solid · Shaky · Not done · Taught (not checked yet)
 | 19 | Type predicates, assertion functions | Taught | |
 | 20 | as, !, as const, satisfies | Taught | |
 | 22 | Classes | Not done | Priority P3. |
-| 23 | extends vs implements | Not done | Interview flagged: explain clearly. Priority P2. |
-| 82 | Webhooks and payments engineering | Not done | Interview flagged (Stripe, webhooks, idempotency). Priority P4. |
+| 23 | extends vs implements | Not done | Interview flagged: explain clearly. Priority P4. |
+| 82 | Webhooks and payments engineering | Not done | Interview flagged (Stripe, webhooks, idempotency). Priority P5. |
 
 ## Open build tasks
 - lesson-01 Stage 1 gaps: complete the values/scope exercise, bind and prototype work, and `Promise.allSettled` practice in `lesson-01/TASK.md`.
-- lesson-06 booking events handler: an earlier brief was not saved in the repo; re-issue it when Stage 6 is next.
+- lesson-02 booking events handler: the earlier brief was not saved in the repo; re-issue it for topics 18–20.
 
 ## Interview feedback to train against
 - Explain flows end to end with architecture detail: database schema, scheduling mechanism, email/payment provider integration.

@@ -41,8 +41,8 @@ Rules for sources:
    - "Say:" 1–2 sentences I could say in an interview.
    - Official links used.
 4. **Check-in (3 questions + 1 STAR question):** interview-style questions. Wait for my answers. Grade each **Solid / Shaky / Not done**, and show what a strong spoken answer would add. My answers tend to be too short: push me to answer in full sentences with one real example, like I'm speaking in an interview.
-5. **Build task:** one small task (20–40 minutes) in a new folder `lesson-XX/` (continue the numbering: lesson-01, lesson-02, ...), using a booking/payments example. Include: what to build, acceptance checks, and the commands to verify (`pnpm exec tsc --noEmit --strict` to type-check, then `node file.ts` to run). When I say I've finished, review my code: what works, bugs, and improvements.
-6. **End:** update `PROGRESS.md` (topic statuses, "Next", notes), add the new lesson to the Lessons table in `README.md` (keep its style), and write a short session note in `sessions/YYYY-MM-DD.md` (topics, questions asked, my grades, build task, links used, what's next). Then list the files you changed so I can review and commit them.
+5. **Build task:** add each exercise to the folder for its syllabus stage. `lesson-01/` is Stage 1, `lesson-02/` is Stage 2, `lesson-03/` is Stage 3, and so on. A stage folder can contain several exercises. Each exercise uses a matching pair: `<name>.ts` and `<name>-TASK.md`. Use a booking/payments example. Include acceptance checks and root-based verify commands (`pnpm exec tsc --noEmit --strict path/to/<name>.ts`, then `node path/to/<name>.ts`). When I say I've finished, review my code: what works, bugs, and improvements.
+6. **End:** update `PROGRESS.md` (topic statuses, "Next", notes), update the stage table and Status line in `README.md` (keep its style), and write a short session note in `sessions/YYYY-MM-DD.md` (topics, questions asked, my grades, build task, links used, what's next). Then list the files you changed so I can review and commit them.
 
 ## Interview-answer style to train
 For any "how did you build X?" question, train me to answer in this order:
@@ -56,5 +56,5 @@ Quiz me on the week's topics (8–10 questions, weighted to Shaky / Not done), p
 - `SYLLABUS.md`: the learning path (priority track first, then stages in order).
 - `PROGRESS.md`: source of truth for where I am. Keep its format.
 - `sessions/`: one note per session.
-- `README.md`: public repo overview. Only add rows to the Lessons table and update the Status line.
-- `lesson-XX/`: my builds, one folder per lesson.
+- `README.md`: public repo overview. Update the stage table and Status line.
+- `lesson-XX/`: one folder per syllabus stage. Keep each exercise's `.ts` file beside its matching `-TASK.md` file. Priority-track order controls teaching order; the stage controls folder placement.

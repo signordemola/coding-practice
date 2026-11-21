@@ -4,6 +4,13 @@ Style: stack-agnostic idea first, examples in TypeScript, always tied to real ap
 
 ## Priority track (do these first: they came up in real interviews)
 Interview feedback: explain flows end to end with architecture detail (schema, scheduling, email/payment integration), explain TypeScript fundamentals clearly (interface vs type, implements vs extends), and Stripe/webhooks/idempotency questions.
+- NOW. Dates and time zones (topic 83), moved to the front because it came up in a recent interview, so expect follow-up questions or a paid task on it. Teach from MDN (Temporal and Date pages) and the date-fns docs, and check Temporal's current browser and Node.js support before stating it. Cover:
+  1. Storing vs showing: store an instant (UTC) plus the business's IANA time zone (e.g. `America/New_York`), never a raw local string; show times in the viewer's zone.
+  2. Daylight saving: a 9am booking on the day the clocks change, times that don't exist (spring forward) or happen twice (fall back), and recurring weekly slots across a DST change.
+  3. date-fns vs Temporal: what each is for, what Temporal fixes over `Date` (immutability, real time-zone types like `ZonedDateTime` and `PlainDate`, clear arithmetic), and when you'd still use date-fns (with `@date-fns/tz`) in an existing codebase.
+  4. Booking rules: overlapping slots, buffers between appointments, business hours in the business's zone, and deposit/balance due dates.
+  Use `REAL-APP-NOTES.md` sections 1–2 for the real-app side: my app uses date-fns with `@date-fns/tz`, not Temporal, so teach Temporal as "what I'd use next and why", and drill the "gaps to check" list.
+  Build `lesson-06/booking-timezones.ts` with `booking-timezones-TASK.md`: generate available slots for a business in one zone, viewed by a client in another, including a DST-change day, with buffers and overlap checks. Then do the "Say:" practice: explain out loud how your own booking app handles time zones, using the Trigger → Data → Processing → External → Failure → Trade-off order.
 - P0. Catch-up check on topics 11–20 (taught, never checked): short re-explain + questions. Also show `pnpm exec tsc --noEmit --strict` output (topic 10).
 - P1. Topics 4 and 5: `this`, call/apply/bind, prototypes (finish lesson-01 Parts 2–3). Needed before classes.
 - P2. Topic 14: type aliases vs interfaces (declaration merging, unions, when to use which).
@@ -14,7 +21,7 @@ Interview feedback: explain flows end to end with architecture detail (schema, s
 - P7. Topic 77: background jobs and scheduled work (reminders, emails), queues, retries with backoff.
 - P8. Topics 70–72: keys, joins, transactions, unique constraints, indexes, N+1.
 - P9. Topic 63: request lifecycle and middleware.
-- P10. Topic 83: dates and time zones (booking slots, DST).
+- P10. Topic 83: moved to NOW above. Re-test it here with harder follow-ups.
 - P11. Topics 120–121: system design method + "design a booking system for many businesses" (double-booking prevention, slot holds, race conditions).
 - P12. Practice: explain 3 end-to-end flows out loud (booking -> deposit -> reminder -> invoice) using Trigger -> Data -> Processing -> External -> Failure -> Trade-off.
 - P13. UI interaction rules (topics 45, 53, and 55): truncation, wrapping, empty/loading/error states, and documenting assumptions with annotations and checklists before building. Build `lesson-05/booking-ui-states.ts` with `booking-ui-states-TASK.md`: model a booking list with long service names and all loading, empty, and error states; write the assumptions checklist first.
@@ -117,7 +124,7 @@ After the priority track, continue the stages below in order from topic 6, skipp
 80. File uploads and object storage, signed URLs
 81. Search: full-text search, search engines (e.g. Elasticsearch) basics
 82. Webhooks and payments engineering: idempotency keys, retries, reconciliation, refunds
-83. Dates and time zones: store UTC, show local, daylight-saving traps
+83. Dates and time zones: store UTC, show local, daylight-saving traps, date-fns vs the Temporal API
 84. Rate limiting and throttling
 
 ## Stage 7 — Cross-cutting engineering

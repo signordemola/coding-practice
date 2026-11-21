@@ -56,5 +56,6 @@ Quiz me on the week's topics (8–10 questions, weighted to Shaky / Not done), p
 - `SYLLABUS.md`: the learning path (priority track first, then stages in order).
 - `PROGRESS.md`: source of truth for where I am. Keep its format.
 - `sessions/`: one note per session.
+- `REAL-APP-NOTES.md`: generic patterns from my real production app. Use it for "how did you build X?" practice, STAR answers and exercise ideas. Never add client names, code or business details to it.
 - `README.md`: public repo overview. Update the stage table and Status line.
 - `lesson-XX/`: one folder per syllabus stage. Keep each exercise's `.ts` file beside its matching `-TASK.md` file. Priority-track order controls teaching order; the stage controls folder placement.

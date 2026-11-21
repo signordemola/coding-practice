@@ -1,176 +1,194 @@
 # Syllabus
 
-Style: stack-agnostic idea first, examples in TypeScript, always tied to real apps (booking, payments, reminders, invoices, dashboards). Each session: teach → check-in → build → update PROGRESS.md.
+Goal: become an engineer who can **understand a real app, find its edge cases, debug it, fix it, and explain it**: in my own apps, in other people's code, and in open-source projects. Every topic is tied to the real production apps described in `real-apps/`, so I can talk about my own work with confidence: what I built, why, what can go wrong, and what I'd do next.
 
-## Priority track (do these first: they came up in real interviews)
-Interview feedback: explain flows end to end with architecture detail (schema, scheduling, email/payment integration), explain TypeScript fundamentals clearly (interface vs type, implements vs extends), and Stripe/webhooks/idempotency questions.
-- NOW. Dates and time zones (topic 83), moved to the front because it came up in a recent interview, so expect follow-up questions or a paid task on it. Teach from MDN (Temporal and Date pages) and the date-fns docs, and check Temporal's current browser and Node.js support before stating it. Cover:
-  1. Storing vs showing: store an instant (UTC) plus the business's IANA time zone (e.g. `America/New_York`), never a raw local string; show times in the viewer's zone.
-  2. Daylight saving: a 9am booking on the day the clocks change, times that don't exist (spring forward) or happen twice (fall back), and recurring weekly slots across a DST change.
-  3. date-fns vs Temporal: what each is for, what Temporal fixes over `Date` (immutability, real time-zone types like `ZonedDateTime` and `PlainDate`, clear arithmetic), and when you'd still use date-fns (with `@date-fns/tz`) in an existing codebase.
-  4. Booking rules: overlapping slots, buffers between appointments, business hours in the business's zone, and deposit/balance due dates.
-  Use `REAL-APP-NOTES.md` sections 1–2 for the real-app side: my app uses date-fns with `@date-fns/tz`, not Temporal, so teach Temporal as "what I'd use next and why", and drill the "gaps to check" list.
-  Build `lesson-06/booking-timezones.ts` with `booking-timezones-TASK.md`: generate available slots for a business in one zone, viewed by a client in another, including a DST-change day, with buffers and overlap checks. Then do the "Say:" practice: explain out loud how your own booking app handles time zones, using the Trigger → Data → Processing → External → Failure → Trade-off order.
-- P0. Catch-up check on topics 11–20 (taught, never checked): short re-explain + questions. Also show `pnpm exec tsc --noEmit --strict` output (topic 10).
-- P1. Topics 4 and 5: `this`, call/apply/bind, prototypes (finish lesson-01 Parts 2–3). Needed before classes.
-- P2. Topic 14: type aliases vs interfaces (declaration merging, unions, when to use which).
-- P3. Topic 82: Stripe webhooks and payment state. Cover signature verification on the raw body, idempotency, storing processed event IDs with a unique constraint, duplicate and out-of-order events, concurrent deliveries and race conditions, transactional payment-state updates, retries, refunds, reconciliation, and Stripe CLI testing. Move this ahead of classes and inheritance due to interview feedback. Build `lesson-06/stripe-webhook.ts` with its matching `stripe-webhook-TASK.md`: process duplicate and concurrent events safely, then prove one payment-state transition is recorded.
-- P4. Topic 22: classes (access modifiers, readonly, parameter properties, abstract classes).
-- P5. Topic 23: extends vs implements, inheritance vs composition.
-- P6. Topic 64: REST API design (idempotency, status codes, pagination, errors).
-- P7. Topic 77: background jobs and scheduled work (reminders, emails), queues, retries with backoff.
-- P8. Topics 70–72: keys, joins, transactions, unique constraints, indexes, N+1.
-- P9. Topic 63: request lifecycle and middleware.
-- P10. Topic 83: moved to NOW above. Re-test it here with harder follow-ups.
-- P11. Topics 120–121: system design method + "design a booking system for many businesses" (double-booking prevention, slot holds, race conditions).
-- P12. Practice: explain 3 end-to-end flows out loud (booking -> deposit -> reminder -> invoice) using Trigger -> Data -> Processing -> External -> Failure -> Trade-off.
-- P13. UI interaction rules (topics 45, 53, and 55): truncation, wrapping, empty/loading/error states, and documenting assumptions with annotations and checklists before building. Build `lesson-05/booking-ui-states.ts` with `booking-ui-states-TASK.md`: model a booking list with long service names and all loading, empty, and error states; write the assumptions checklist first.
-- P14. Stacking context (topics 42 and 46): what creates a context (`transform`, `opacity`, `position`, `z-index`) and how to debug layers and animations in DevTools. Build `lesson-05/booking-overlay.ts` with `booking-overlay-TASK.md`: create a booking/payment overlay and diagnose why its confirmation layer appears behind another layer.
-- P15. State architecture (topic 50): local state vs lifted state vs a global store vs a state machine, and when to choose each. Build `lesson-05/booking-state-architecture.ts` with `booking-state-architecture-TASK.md`: model a booking reschedule and checkout flow, choose a state approach, and explain the trade-off.
-- P16. React re-renders and memoization (topic 51): render triggers, `memo`, `useMemo`, `useCallback`, referential equality, and when not to memoise. Build `lesson-05/booking-dashboard-renders.ts` with `booking-dashboard-renders-TASK.md`: trace updates in a booking dashboard, identify unnecessary renders, and justify each memoization choice.
-- P17. Code review judgment (topics 94 and 97): when to request a change or leave a comment; overused `useEffect`; when to extract a custom hook. Build `lesson-05/booking-component-review.ts` with `booking-component-review-TASK.md`: review a booking editor, separate required changes from comments, then fix only the required issues.
-After the priority track, continue the stages below in order from topic 6, skipping topics already Solid.
+Theory serves practice. Track R (real-world debugging and open source) is the backbone: it runs every week from the first week, and every other track feeds it.
 
-## Stage 1 — JavaScript core under TypeScript
-1. Values, types, equality (== vs ===), truthy and falsy
-2. Scope: let, const, var, hoisting, block scope
-3. Closures and where they are used in real apps
-4. `this`, arrow functions, call / apply / bind
-5. Prototypes and how JavaScript classes really work
-6. Callbacks → Promises → async/await, and error handling
-7. The event loop: call stack, microtasks, macrotasks, timers
-8. Arrays and objects: map/filter/reduce, spread/rest, destructuring, shallow vs deep copy, immutability
+## The learning loop (every module)
 
-## Stage 2 — TypeScript basics
-9. What TypeScript is, TS vs JS, the compile step, types disappear at runtime
-10. tsc, tsconfig basics, strict mode
-11. Primitive types, arrays, tuples, any / unknown / never / void, null / undefined and strictNullChecks
-12. Type inference vs annotations, type widening
-13. Literal types, union types, intersection types
-14. Type aliases vs interfaces, extending and merging
-15. Object types: optional, readonly, index signatures, excess property checks
-16. Functions: parameter and return types, optional/default/rest parameters, overloads
-17. Narrowing: typeof, truthiness, equality, `in`, instanceof, control-flow analysis
-18. Discriminated unions, `never`, exhaustiveness checking
-19. Type predicates (`x is T`) and assertion functions
-20. Type assertions (`as`), non-null `!`, `as const`, `satisfies`
-21. Enums vs literal unions
-22. Classes: access modifiers, readonly, parameter properties, abstract classes
-23. extends vs implements, inheritance vs composition, overriding, polymorphism
+Built on study methods with strong research support: retrieval practice, spaced practice, interleaving, self-explanation and concrete examples.
 
-## Stage 3 — TypeScript intermediate and advanced
-24. Generics basics (functions, interfaces, classes)
-25. Generic constraints, defaults, keyof
-26. Structural typing and type compatibility
-27. `typeof` as a type operator, indexed access types
-28. Utility types 1: Partial, Required, Readonly, Pick, Omit, Record
-29. Utility types 2: Exclude, Extract, NonNullable, ReturnType, Parameters, Awaited, InstanceType
-30. Mapped types
-31. Conditional types and `infer`
-32. Template literal types
-33. Recursive types
-34. Typing async code and errors: Promise<T>, `unknown` in catch, Result-style returns
-35. Types vs runtime validation: schemas (e.g. Zod), DTOs, sharing types between frontend and backend
-36. Modules, type-only imports, declaration files (.d.ts), @types packages
-37. Decorators and where they are used (e.g. NestJS, Angular)
-38. tsconfig in depth (strict flags, target, module, paths), linting/formatting, common TypeScript traps
+1. **Learn**: the idea in plain English, then the current official docs (see `AGENTS.md` for sources).
+2. **Explain back**: I explain it in my own words before seeing more examples. Codex corrects gaps.
+3. **Build**: a small exercise using a booking or community-app example.
+4. **Break**: find the bug, race or edge case in a given snippet (or in my own build).
+5. **Speak**: answer one interview question out loud in full sentences, using my real apps: Trigger → Data → Processing → External → Failure → Trade-off.
+6. **Review later**: the module goes into the review queue in `PROGRESS.md` and gets re-tested from memory after about 1, 3, 7 and 21 days.
 
-## Stage 4 — How the web works
-39. The internet: IP, DNS, domains, hosting
-40. HTTP: methods, status codes, headers
-41. HTTPS and TLS
-42. How browsers render a page (DOM, CSSOM, layout, paint)
-43. Web servers, reverse proxies (e.g. Nginx), load balancers
-44. Same-origin policy and CORS
+Each session mixes topics (interleaving): one main module from the Path, one Track A fundamentals module, the review queue, and one real-app question.
 
-## Stage 5 — Frontend concepts
-45. Semantic HTML and forms
-46. CSS box model, flexbox, grid
-47. Responsive and mobile-first design
-48. Browser APIs: fetch, localStorage/sessionStorage, cookies, IndexedDB
-49. Component-based UI: props, state, composition (framework-agnostic)
-50. State management patterns: local, lifted, global stores, server state
-51. Re-renders and memoization
-52. Client-side routing
-53. Forms and validation: controlled vs uncontrolled
-54. Rendering strategies: CSR, SSR, SSG, ISR, streaming, hydration, server components
-55. Client data fetching and caching: loading/error states, stale-while-revalidate
-56. Frontend performance and Core Web Vitals (LCP, INP, CLS)
-57. Code splitting, lazy loading, bundlers and build tools
-58. Accessibility (a11y)
-59. Frontend security: XSS, Content Security Policy, where to store tokens
-60. PWAs, service workers, web components
-61. Design systems and component libraries
-62. Frontend testing (unit, component, end-to-end), DevTools and Lighthouse
+### Weekly practice rhythm (Track R)
+- **2 bug hunts**: Codex writes a small, realistic file (booking, payments, feed, auth) with 1–3 planted bugs from the bug classes in `real-apps/`. I get 20 minutes with no hints: reproduce, write a failing test, fix, explain.
+- **1 code-reading drill**: one flow from a real open-source repo (see R7), for example the Stripe webhook handler in `nextjs/saas-starter` or the booking-creation path in `calcom/cal.diy`. Trace it from the click or request to the database write, then write one page: what it does, what it assumes, and which failures it handles vs ignores (two requests at once, duplicate webhook, failure after the first write, job retry after partial success, runtime time limit, dropped connection).
+- **1 postmortem or bug write-up**: a 5-line summary: trigger, root cause, fix, lesson, where the same bug could happen in my apps.
+- **Every 2–3 weeks: one real open-source issue**: reproduce it; if it's fresh and nobody's on it, fix it and open a PR myself.
 
-## Stage 6 — Backend concepts
-63. Request lifecycle and middleware
-64. REST API design: resources, methods, idempotency, status codes, versioning, pagination
-65. GraphQL, gRPC, OpenAPI specs — when to use which
-66. Authentication: basic, cookie/session, token/JWT, refresh tokens
-67. OAuth 2.0, OpenID Connect, SSO, SAML basics
-68. Authorization: roles, permissions, ownership checks, multi-tenant apps
-69. Password hashing: bcrypt/scrypt/argon2, and why not MD5/SHA
-70. Relational databases: tables, keys, joins, normalisation
-71. ACID, transactions, isolation levels
-72. Indexes, query plans (EXPLAIN), the N+1 problem
-73. ORMs and migrations
-74. NoSQL types (document, key-value, graph) and when to choose them
-75. Scaling databases: replication, read replicas, sharding, connection pooling
-76. CAP theorem and consistency models
-77. Message brokers and queues (e.g. RabbitMQ, Kafka), pub/sub, background jobs
-78. Real-time: polling, long polling, Server-Sent Events, WebSockets
-79. Server-side validation and error handling
-80. File uploads and object storage, signed URLs
-81. Search: full-text search, search engines (e.g. Elasticsearch) basics
-82. Webhooks and payments engineering: idempotency keys, retries, reconciliation, refunds
-83. Dates and time zones: store UTC, show local, daylight-saving traps, date-fns vs the Temporal API
-84. Rate limiting and throttling
+## The Path (teaching order)
 
-## Stage 7 — Cross-cutting engineering
-85. Caching layers and HTTP caching (Cache-Control, ETag, CDN)
-86. Server caching (e.g. Redis): cache-aside, write-through, TTL, invalidation
-87. Scalability: vertical vs horizontal, stateless services, load balancing
-88. Resilience: timeouts, retries with backoff, circuit breakers, backpressure, graceful degradation
-89. Architecture styles: monolith, SOA, microservices, serverless, service mesh
-90. Observability: logs, metrics, traces, alerts
-91. Profiling and backend performance tuning
-92. OWASP Top 10 and server security
-93. Testing strategy: test pyramid, unit/integration/E2E, mocking, TDD
-94. Clean code and refactoring
-95. SOLID principles
-96. Design patterns: factory, singleton, strategy, observer, adapter, dependency injection
-97. Git workflows and code review standards
-98. CI/CD pipelines
-99. Docker and containers
-100. Config, secrets and the 12-factor app
-101. Deployment and hosting: VMs, platforms, serverless, CDNs
-102. Documentation and API docs
+### Throughout: Track R
+R1–R4 in the first two weeks (reading code, reproducing, narrowing, bisecting), then R5–R9 woven into the other tracks. The weekly rhythm above never stops.
 
-## Stage 8 — AI engineering basics (relevant to AI training/evaluation work)
-103. How LLMs work: tokens, context window, sampling, hallucinations
-104. Prompting techniques
-105. Structured outputs and function/tool calling
-106. Embeddings and vector search
-107. RAG (retrieval-augmented generation)
-108. Agents and MCP
-109. AI-assisted coding: where AI code is strong and where it fails
-110. Evaluating AI-generated code: correctness, edge cases, security, readability
-111. Writing good evaluations: rubrics, test cases, comparing two model answers
-112. Writing coding tasks for AI training: clear spec, tests, reproducible environment
+### Phase 1: what my interviews are asking now
+1. **B1–B8 Time.** It came up in a live interview. My apps use date-fns + `@date-fns/tz` and `Intl`; learn Temporal as "what I'd use next and why".
+2. **C1–C8 Data correctness in Postgres.** Double bookings, counters, constraints, locks.
+3. **D1–D5 Idempotency and duplicates.** Both apps depend on it.
+4. **E1–E7 Payments.** micro1 feedback: Stripe, webhooks, idempotency.
+5. Alongside, from Track A: check A17–A20, finish A4–A5, then A22–A23 (classes, extends vs implements: flagged in an interview).
 
-## Stage 9 — Coding patterns and system design
-113. Problem-solving method and Big-O
-114. Arrays and hashing
-115. Two pointers and sliding window
-116. Stacks, queues, binary search
-117. Linked lists, trees, BFS and DFS
-118. Recursion, backtracking, dynamic programming basics
-119. Sorting, intervals, heaps
-120. System design method: requirements, estimates, components, trade-offs
-121. Design: a booking system for many businesses
-122. Design: URL shortener, rate limiter, chat app
-123. Behavioural answers (STAR, real examples only)
-124. Final mock: mixed questions
+### Phase 2: reliability and safety
+6. **F1–F7 Background work and reliability.**
+7. **H1–H8 Auth, security and privacy.**
+8. **G1–G5 Caching and performance.**
 
-After 124: cycle 2 from topic 1 with harder follow-up questions, prioritising Shaky topics.
+### Phase 3: product depth
+9. **I1–I8 Frontend and React** (includes the frontend interview priorities: UI states, stacking, state architecture, re-renders, code review).
+10. **J1–J4 Feeds, ranking and search.**
+11. **K1–K5 Testing.**
+
+### Phase 4: interview mastery
+12. **M1–M6 System design and speaking**, including full mock interviews.
+13. **N1–N8 AI engineering** (for AI-training and evaluation roles).
+14. **L Web and platform fundamentals**: pull in any module as soon as another module needs it.
+
+After the Path: cycle 2 with harder follow-ups, prioritising Shaky topics.
+
+---
+
+## Track R: Real-world debugging and open source (the backbone)
+Why: paid roles and interviews test whether I can work in code I didn't write. My first open-source PR (a calendar library's modal positioning bug) is the model: read the code, reproduce, fix with a test, explain.
+- R1 **Reading an unfamiliar codebase**: README and CONTRIBUTING, folder map, entry points; follow one request or click end to end; search for the exact error text; read the tests and recently merged PRs; `git log` and `git blame` to learn why code is the way it is.
+- R2 **Reproduce first**: exact steps, expected vs actual, a minimal reproduction, then a failing test before touching the fix. If I can't reproduce it, I don't "fix" it.
+- R3 **Narrow it down**: write the suspected root cause in one sentence before changing any code; one hypothesis at a time, written down; server terminal, browser console and Network tab first; change one thing at a time; logging and tracing; the Node and browser debuggers (`node --inspect`, DevTools breakpoints); reading a stack trace from the top frame I own.
+- R4 **`git bisect`**: find the commit that introduced a regression, and automate it with `git bisect run` and a test script.
+- R5 **Edge-case hunting**: a checklist I run on any feature: time zones and DST, month ends, money rounding, double clicks and retries, two requests at once, empty/huge/unicode input, permissions and other people's IDs, stale caches, slow or failing third-party services.
+- R6 **Fix well**: the smallest correct change; a test that fails before and passes after; check what else calls the code; no drive-by refactors in the same PR.
+- R7 **Open-source workflow**: pick an issue with no assignee and no linked PR; comment with the cause and plan; fork, branch, fix, test; a clear PR (what was wrong, what changed, how I tested, "Fixes #"); respond to review. Practice repos in my domain: schedule-x (calendar), Rallly (scheduling polls), Atomic CRM (small-business dashboard), cal.diy (booking, very crowded: only fresh issues).
+- R8 **Learning from other people's failures**: public postmortems (danluu/post-mortems) and debugging stories; one a week, linked to my apps.
+- R9 **Explaining a fix**: the bug-story format for interviews and PRs: symptom → reproduction → hypothesis → evidence → root cause → fix → test → prevention. Keep each story under two minutes; record it and cut the filler.
+- Sources: Julia Evans on debugging (jvns.ca: "Some ways to get better at debugging", "A debugging manifesto"), David Agans' *Debugging* (nine rules), git-scm.com/docs/git-bisect, github.com/danluu/post-mortems, docs.stripe.com/webhooks.
+- Build (`lesson-r-debugging/`): bug-hunt files with their `-TASK.md`, one folder of notes per real-repo issue I investigate.
+
+## Track A: JavaScript and TypeScript core
+IDs A1–A38 keep the old topic numbers, so earlier progress still applies. Teach each one with an example from the apps (booking status unions, Zod-validated payloads, money in cents).
+- A1 Values, equality, truthy/falsy · A2 Scope and hoisting · A3 Closures · A4 `this`, arrows, call/apply/bind · A5 Prototypes and how classes work · A6 Promises, async/await, errors · A7 Event loop · A8 Arrays, objects, copies, immutability
+- A9 What TypeScript is (types are erased) · A10 tsc, tsconfig, strict · A11 Primitives, tuples, any/unknown/never/void · A12 Inference and widening · A13 Literal, union, intersection types · A14 Type aliases vs interfaces · A15 Object types · A16 Functions and overloads · A17 Narrowing · A18 Discriminated unions and exhaustiveness (booking/payment states) · A19 Type predicates and assertion functions · A20 `as`, `!`, `as const`, `satisfies` · A21 Enums vs literal unions · A22 Classes · A23 extends vs implements, inheritance vs composition
+- A24 Generics · A25 Constraints, keyof · A26 Structural typing · A27 typeof and indexed access types · A28–A29 Utility types · A30 Mapped types · A31 Conditional types and `infer` · A32 Template literal types · A33 Recursive types · A34 Typing async code and errors (Result-style returns) · A35 Runtime validation with Zod, sharing types between client and server · A36 Modules and declaration files · A37 Decorators · A38 tsconfig in depth and common traps
+
+## Track B: Time (both apps)
+Why: one app books appointments across zones; the other shows "3 hours ago", month labels and daily charts. Time bugs are silent and interviewers love them.
+- B1 **Three kinds of time**: an instant (exact moment), a wall-clock time in a zone (9:00 in New York), and a plain date or month with no instant. Which one each field in my apps is, and why.
+- B2 **IANA zones and offsets**: zone names vs fixed offsets; why one studio zone is stored separately from instants.
+- B3 **Daylight saving**: the missing hour and the repeated hour; what a library does with a wall time that doesn't exist; hiding vs shifting slots. Write the two DST tests.
+- B4 **Elapsed time vs calendar time**: "24 hours" vs "tomorrow at the same time"; lead times, reminders and account-age rules.
+- B5 **"Today" depends on who's asking**: the business's day vs the browser's day vs the server's day vs the cron's zone; month boundaries and why UTC+14 matters.
+- B6 **date-fns + `@date-fns/tz`** (what my booking app uses): TZDate, building slots in the studio zone, formatting back.
+- B7 **Temporal**: Instant, ZonedDateTime, PlainDate, PlainYearMonth, Duration, and the disambiguation options for DST. Compare each with how my apps do it today. Check current browser and Node support before stating it.
+- B8 **Storing and showing time**: Postgres `timestamp` vs `timestamptz`, the session time zone, `interval '1 day'` vs 24 hours; `Intl.DateTimeFormat` and relative time; server vs browser rendering (hydration mismatches); cached pages that freeze "minutes ago".
+- Build (`lesson-b-time/`): generate available slots for a business in one zone viewed from another, across a DST change, with buffers and overlap checks. Then rebuild the same function with Temporal and compare.
+- Speak: "Where does an appointment time live and what does the column mean?" · "What breaks on a DST change?" · "Why is a month stored as a date, not a timestamp?"
+
+## Track C: Data correctness in Postgres
+Why: double bookings, drifting counters and duplicate rows are the classic bugs in both apps.
+- C1 **Schema and constraints**: primary, foreign, unique, partial unique, check constraints. Let the database enforce rules the app can forget.
+- C2 **Transactions and isolation**: ACID, read committed (the Postgres default), and why "check, then insert" can race (time-of-check vs time-of-use).
+- C3 **Locks**: row locks (`SELECT … FOR UPDATE`), transaction-scoped advisory locks, lock ordering and deadlocks.
+- C4 **Preventing overlaps in the database**: exclusion constraints with `tstzrange` + `btree_gist`, and Postgres 18 `WITHOUT OVERLAPS`. Compare with app-level checks and Redis holds.
+- C5 **Counters and snapshots**: counters updated in the same transaction; price/deposit snapshots on the booking so later edits don't change history.
+- C6 **Money**: integer cents, tax rounding, separating pre-tax amounts from tax.
+- C7 **IDs and pagination**: UUIDv7 (time-ordered, built into Postgres 18), keyset/cursor pagination vs OFFSET, the right composite index.
+- C8 **ORMs, migrations and least privilege**: Prisma and Drizzle, migrations, generated columns, and database roles (for example an append-only audit table).
+- Build (`lesson-c-data/`): a booking insert that two parallel requests race. Show it double-books, then fix it two ways (exclusion constraint, advisory lock) and explain the trade-off.
+- Speak: "How do you stop a double booking, and where can it still fail?" · "How do you keep a vote counter correct under double clicks?"
+
+## Track D: Idempotency and duplicates
+Why: double clicks, retries, two tabs and webhook redeliveries hit both apps.
+- D1 **What idempotency means**: at-least-once vs at-most-once vs "effectively once".
+- D2 **Client-generated keys**: an idempotency table inserted first in the same transaction; what happens on refresh; cleanup of old keys.
+- D3 **Natural keys**: one vote per member per post, one open report per target, upsert / insert-on-conflict.
+- D4 **Provider keys**: Stripe idempotency keys, email provider keys and their retention windows (check each provider's docs).
+- D5 **Side effects after commit**: why a stored event ID can skip an email forever, and how to fix it (see F2).
+- Build (`lesson-d-idempotency/`): a "create post" handler that survives double submit, retry and refresh.
+
+## Track E: Payments (booking app)
+- E1 **Stripe Checkout**: sessions, expiry, deposit vs balance, reusing a live session.
+- E2 **Webhooks**: signature check on the raw body, return 2xx fast and process asynchronously, duplicate events, no ordering guarantee, Stripe's retry window, replay tolerance. Teach from docs.stripe.com/webhooks.
+- E3 **Payment state machine**: pending → confirmed → paid/completed/cancelled; never move a cancelled booking back by accident; late webhooks.
+- E4 **Verify the amount**: compare what was paid with what was expected before confirming.
+- E5 **Refunds, failures and disputes**: handle them or document the policy clearly.
+- E6 **Two providers, one rulebook**: keeping PayPal and Stripe consistent (tax, partial vs full).
+- E7 **Reconciliation**: catching missed events; testing with the Stripe CLI.
+- Build (`lesson-e-payments/`): a webhook handler that processes duplicate, out-of-order and concurrent events safely and records one payment-state change.
+
+## Track F: Background work and reliability
+- F1 **Jobs and steps**: durable functions (Inngest), steps, sleeps, default retries, idempotent steps.
+- F2 **Transactional outbox**: write "work to do" in the same transaction as the change, so emails and calendar syncs can't be lost.
+- F3 **After-response work**: `waitUntil` on edge runtimes and its time limit, vs a real job queue.
+- F4 **Retries and backoff**: what to retry, what not to; non-retriable errors; swallowed errors that hide failures.
+- F5 **Schedules**: crons and time zones; jobs that must follow a reschedule.
+- F6 **Error tracking and alerts**: grouping by fingerprint, alert throttling, cleanup jobs.
+- F7 **Cleanup and orphaned files**: deleting files outside a transaction safely.
+
+## Track G: Caching and performance
+- G1 **HTTP and edge caching**: Cache-Control, what can be shared vs what is personal, splitting public pages from private data.
+- G2 **Invalidation**: purge vs short TTL vs "read your own writes".
+- G3 **Redis**: slot holds as courtesy locks, rate-limit counters, TTLs.
+- G4 **Database connections at the edge**: pooling (for example Hyperdrive), one connection per request.
+- G5 **Images and Core Web Vitals**: resizing on the way out, LCP/INP/CLS.
+
+## Track H: Auth, security and privacy
+- H1 **Sessions and OAuth**: cookies, session lifetime and refresh, Google sign-in (Better Auth).
+- H2 **Authorization**: roles, allow-lists, ownership checks; middleware is not enough on its own.
+- H3 **Two-factor for staff**: why "installed" is not "enforced".
+- H4 **Signed links**: HMAC tokens, expiry, single use.
+- H5 **Leaky endpoints (IDOR)**: public routes keyed by an ID that return personal data.
+- H6 **Abuse controls**: rate limits that race, bots (Turnstile, honeypots), breached-password checks, disposable emails.
+- H7 **Uploads**: signed upload URLs, type/size checks, stripping location metadata.
+- H8 **Audit logs and the OWASP Top 10**.
+
+## Track I: Frontend and React
+- I1 React 19 and Next.js App Router: server vs client components, server actions.
+- I2 Hydration: why server and browser output must match; time and locale traps.
+- I3 Server state with TanStack Query: caching, stale data, refetch after a write.
+- I4 Forms and validation (client + server, Zod).
+- I5 UI states and assumptions: truncation, empty/loading/error states; write the assumptions checklist first.
+- I6 Stacking contexts and DevTools: why an overlay sits behind another layer.
+- I7 State architecture and re-renders: local vs lifted vs global vs state machine; `memo`, `useMemo`, `useCallback`, and when not to.
+- I8 Code review judgment: required change vs comment; overused `useEffect`; when to extract a hook.
+- Build (`lesson-i-frontend/`): one exercise per module, booking-themed, as in the earlier P13–P17 briefs.
+
+## Track J: Feeds, ranking and search (community app)
+- J1 **"Hot" ranking without a cron**: adding weights in log space with a fixed epoch so stored scores sort like decayed totals; what removing a vote should do.
+- J2 **Cursor feeds and sort tabs**.
+- J3 **Full-text search**: generated `tsvector` columns, weights, GIN indexes.
+- J4 **Anonymous display vs real ownership**: hiding the author while keeping moderation, rate limits and "no self-votes".
+
+## Track K: Testing
+- K1 What to test where: unit, integration, end-to-end (Playwright).
+- K2 Testing time: fake clocks, DST and month-boundary cases.
+- K3 Testing concurrency: firing parallel requests at the same slot or key.
+- K4 Testing payments and webhooks: Stripe CLI, replaying events.
+- K5 Adding tests to an app that has none: where to start for the most safety.
+
+## Track L: Web and platform fundamentals (pull in when needed)
+DNS and hosting · HTTP methods, status codes, headers · HTTPS/TLS · how browsers render · CORS · REST API design and error shapes · request lifecycle and middleware · edge runtimes (Workers) vs Node servers · Docker, CI/CD, config and secrets · observability (logs, metrics, traces).
+
+## Track M: System design and speaking
+- M1 The method: requirements, estimates, components, data, failure modes, trade-offs.
+- M2 Design: a booking system for many businesses (double-booking prevention, holds, payments, reminders).
+- M3 Design: a community feed (ranking, caching, moderation, notifications).
+- M4 Explaining my two real apps end to end in 2 minutes and in 10 minutes.
+- M5 Talking about weak spots honestly: "here's the gap, here's why it exists, here's how I'd fix it".
+- M6 STAR stories from real work only, plus full mock interviews.
+
+## Track N: AI engineering
+How LLMs work · prompting · structured outputs and tool calling · embeddings and RAG · agents and MCP · AI with a fallback (one of my apps calls a model, then a keyword fallback) · evaluating AI-generated code (correctness, edge cases, security) · writing rubrics, test cases and coding tasks for AI training.
+
+---
+
+## Facts checked on 2026-11-21 (re-check before teaching)
+- Temporal is part of the language standard (Stage 4, 2026). It's on by default in Node.js 26 and shipped in Chrome 144 and Firefox 139. Safari had not shipped it in stable. Sources: nodejs.org/en/blog/release/v26.0.0, MDN, caniuse.com/temporal.
+- Postgres 18 added `uuidv7()` and `WITHOUT OVERLAPS` for primary key and unique constraints. Before 18, use an exclusion constraint with `btree_gist`. Source: postgresql.org release notes.
+- Stripe: events can arrive more than once and in any order; track event IDs; return 2xx before complex logic; live-mode retries run for up to three days; verify the signature on the raw body. Source: docs.stripe.com/webhooks.
+- Resend keeps idempotency keys for 24 hours. Source: resend.com/docs.
+- Inngest retries a step 4 times after the first attempt by default. Source: inngest.com/docs.
+- Cloudflare `waitUntil` can extend work for up to 30 seconds after the response. Source: developers.cloudflare.com/workers.

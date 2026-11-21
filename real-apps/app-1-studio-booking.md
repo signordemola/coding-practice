@@ -1,6 +1,8 @@
-# Real app notes
+# App 1: studio booking app
 
-Patterns from a production booking app I built for a studio (services, deposits, balances, reminders, staff admin). Written generically: no client names, code, prices or business details. Codex uses this file to drill me on explaining real work and to build exercises on the same patterns.
+Patterns from a production booking app I built for a studio (services, deposits, balances, reminders, staff admin). Written generically: no client names, code, prices or business details. See `README.md` in this folder for how Codex uses it.
+
+Main syllabus links: B (time), C (double booking, snapshots, money), D and E (idempotency, payments), F (jobs, reminders, outbox), G3 (Redis holds), H (auth, signed links, leaky endpoints), K (testing time and concurrency).
 
 Answer order for every flow: **Trigger → Data → Processing → External services → Failure handling → Trade-off.**
 

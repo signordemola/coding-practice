@@ -1,3 +1,7 @@
 # Project config for Codex in this repo.
 # "live" = Codex searches the current web (official docs), not a cached index.
 web_search = "live"
+
+# Debugging and teaching need careful reasoning. OpenAI's guide suggests
+# medium or high for complex work and debugging.
+model_reasoning_effort = "high"

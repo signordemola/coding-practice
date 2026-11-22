@@ -37,7 +37,7 @@ Each session mixes topics (interleaving): one main module from the Path, one Tra
 - **2 bug hunts**: one of them may be a **code-review drill** instead: Codex writes a small pull request with planted problems; I write review comments (required change vs suggestion), then fix the worst one. Otherwise, Codex writes a small, realistic file (booking, payments, feed, auth) with 1–3 planted bugs from the bug classes in `real-apps/`. I get 25 minutes before any hint: reproduce, write a failing test, fix, explain.
 - **1 code-reading drill**: one flow from a real open-source repo (see R7), for example the Stripe webhook handler in `nextjs/saas-starter` or the booking-creation path in `calcom/cal.diy`. Trace it from the click or request to the database write, then write one page: what it does, what it assumes, and which failures it handles vs ignores (two requests at once, duplicate webhook, failure after the first write, job retry after partial success, runtime time limit, dropped connection).
 - **1 postmortem or bug write-up**: a 5-line summary: trigger, root cause, fix, lesson, where the same bug could happen in my apps.
-- **Every 2 weeks: one recorded practice interview** on a platform that offers free unlimited practice (Mercor), explaining one of my apps end to end (M4). Log what went badly.
+- **Every 2 weeks: one practice interview** on a platform that offers free unlimited practice (Mercor), explaining one of my apps end to end (M4). Log what went badly.
 - **Every 2–3 weeks: one real open-source issue**: reproduce it; if it's fresh and nobody's on it, fix it and open a PR myself.
 
 ## The Path (teaching order)
@@ -60,7 +60,7 @@ R1–R4 in the first two weeks (reading code, reproducing, narrowing, bisecting)
 ### Phase 3: product depth
 9. **I1–I12 Frontend and React** (includes the frontend interview priorities: UI states, stacking, state architecture, re-renders, code review, CSS and layout, DOM events).
 10. **J1–J4 Feeds, ranking and search.**
-11. **K1–K5 Testing.**
+11. **K1–K6 Testing.**
 
 ### Phase 4: interview mastery
 12. **M1–M8 System design and speaking**, including full mock interviews.

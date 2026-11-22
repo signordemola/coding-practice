@@ -62,7 +62,7 @@ Log the deepest rung used per exercise in `PROGRESS.md` (Help log). It should go
 - **1 code-reading drill:** one flow in a real open-source repo (SYLLABUS R7). Check the repo live first; never rely on memory for file paths. I trace it and write a one-page note in `lesson-r-debugging/`.
 - **1 postmortem:** a public one relevant to the track; I summarise it in 5 lines.
 - **Every 2–3 weeks:** a real open-source issue. You help me find a fresh one (no assignee, no linked PR); I fix it and open the PR myself.
-Every 2 weeks I also do one recorded platform practice interview (SYLLABUS weekly rhythm). Log each in the Track R table in `PROGRESS.md`.
+Every 2 weeks I also do one platform practice interview (SYLLABUS weekly rhythm). Log each in the Track R table in `PROGRESS.md`.
 
 ## 7. Exercise format (follow `lesson-b-time/` as the model)
 - Three files per exercise: `<name>.ts` (starter: types and signatures, or buggy code), `<name>.test.ts` (node:test + node:assert/strict), `<name>-TASK.md` (goal, real-app link, rules, ordered parts, done-when, verify commands).
@@ -88,7 +88,7 @@ Every 2 weeks I also do one recorded platform practice interview (SYLLABUS weekl
 
 ## 10. Done means (check every item before ending a session)
 - [ ] `pnpm check` passes (type-check + tests, todo allowed).
-- [ ] `PROGRESS.md` updated: Next session, Last session, module grades, review dates, Help log, real-app drills, Track R log, open tasks.
+- [ ] `PROGRESS.md` updated: Next session, Last session, module grades, review dates, Help log, real-app drills, Track R log, interview bank, quick checks and drills, detours, open tasks.
 - [ ] `README.md` lessons table and Status line updated.
 - [ ] `sessions/YYYY-MM-DD.md` written: modules, questions, my scores, exercises, links used, next.
 - [ ] **Who did the thinking:** one line in the session note: what I produced vs what you supplied, and the deepest hint rung used. If you supplied more than rung 3, say so plainly.

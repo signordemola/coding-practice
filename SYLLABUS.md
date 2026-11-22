@@ -20,6 +20,16 @@ AI tutors help when they make the learner think and hurt when they do the work (
 
 **Time split across a week:** about 40% writing code · 35% debugging and fixing · 15% reading and predicting code · 10% explaining out loud. Tests are the referee, not the main activity: Codex writes the tests that define "done"; I write tests only to reproduce a bug before fixing it and for edge cases I spot myself.
 
+## Lean rules (stay out of tutorial hell)
+**The syllabus is frozen as of 22 Nov 2026.** No new topics. Everything else is learned by building real-world apps, fixing real bugs and contributing to open source.
+1. **One main thing at a time:** one Path module, linked to my real apps, plus the short Track A module and reviews the learning loop already mixes in. No extra courses, side tracks or tutorials.
+2. **Struggle first:** 15–30 minutes of my own attempts before any hint (rung 1 only after a real attempt).
+3. **Stop rule:** a module is done when I can build it, debug a broken version of it, and explain it in 1–2 minutes unaided. Then move on; spaced review keeps it fresh. Covering every edge case is not the bar.
+4. **Just in time:** fundamentals and edge cases come from the task, a real bug or open-source code. Never pre-listed. Modules marked "pull in only when needed" are taught only when a real task needs them.
+5. **Mostly doing:** about 75–80% writing, debugging and reviewing code; the rest reading, predicting and explaining (the weekly time split above). Codex flags a week that drifts.
+6. **No new modules.** If a real task, bug or interview needs something missing, teach it inside the current work. Every two weeks, skip anything unused.
+7. **Rebuild after help:** any exercise where hints reached rung 4–5 is rebuilt from memory at the next session.
+
 ## The learning loop (every module)
 1. **Explain first**: I say what I already know about the idea. Codex corrects gaps.
 2. **Predict → Run → Investigate** (PRIMM): I predict what given code does, run it, then trace and explain the differences. New ideas get a short explanation with the official docs link.
@@ -33,8 +43,8 @@ Each session mixes topics (interleaving): one main module from the Path, one Tra
 **Production-ready standard for every build** (checklist in `AGENTS.md` section 7): validated input, tested failure paths, safe retries and duplicates, timeouts, money in cents, explicit time zones, no secrets, clear names and types.
 
 ### Weekly practice rhythm (Track R)
-- **1 timed coding drill** (M8): 25–45 minutes, no AI help, in my editor, talking out loud, as in real platform tests.
-- **2 bug hunts**: one of them may be a **code-review drill** instead: Codex writes a small pull request with planted problems; I write review comments (required change vs suggestion), then fix the worst one. Otherwise, Codex writes a small, realistic file (booking, payments, feed, auth) with 1–3 planted bugs from the bug classes in `real-apps/`. I get 25 minutes before any hint: reproduce, write a failing test, fix, explain.
+- **1 timed coding drill** (M8): 25–45 minutes, no AI help, in my editor, talking out loud, as in real platform tests. About once a month, make it a **work simulation** instead (60–90 minutes: debug a problem, review a small change, build a small feature with tests, explain one design choice), like the Andela assessment.
+- **2 bug hunts**: one of them may be swapped for a **code-review drill** (Codex writes a small pull request with planted problems; I write review comments, required change vs suggestion, then fix the worst one) or an **evaluation drill** (I turn a bug I already fixed into a gradable task: a clear brief, checks that pass any correct fix and fail wrong or hard-coded ones, my reference fix; then I grade a sample answer with a rubric and write one line per score). Otherwise, Codex writes a small, realistic file (booking, payments, feed, auth) with 1–3 planted bugs from the bug classes in `real-apps/`. I get 25 minutes before any hint: reproduce, write a failing test, fix, explain.
 - **1 code-reading drill**: one flow from a real open-source repo (see R7), for example the Stripe webhook handler in `nextjs/saas-starter` or the booking-creation path in `calcom/cal.diy`. Trace it from the click or request to the database write, then write one page: what it does, what it assumes, and which failures it handles vs ignores (two requests at once, duplicate webhook, failure after the first write, job retry after partial success, runtime time limit, dropped connection).
 - **1 postmortem or bug write-up**: a 5-line summary: trigger, root cause, fix, lesson, where the same bug could happen in my apps.
 - **Every 2 weeks: one practice interview** on a platform that offers free unlimited practice (Mercor), explaining one of my apps end to end (M4). Log what went badly.
@@ -53,18 +63,18 @@ R1–R4 in the first two weeks (reading code, reproducing, narrowing, bisecting)
 5. Alongside, from Track A: check A17–A20, finish A4–A5, then A22–A23 (classes, extends vs implements: flagged in an interview).
 
 ### Phase 2: reliability and safety
-6. **F1–F8 Background work and reliability.**
+6. **F1–F7 Background work and reliability.**
 7. **H1–H8 Auth, security and privacy.**
-8. **G1–G6 Caching, performance and APIs at scale.**
+8. **G1–G5 Caching and performance.**
 
 ### Phase 3: product depth
-9. **I1–I12 Frontend and React** (includes the frontend interview priorities: UI states, stacking, state architecture, re-renders, code review, CSS and layout, DOM events).
+9. **I1–I8 Frontend and React** (includes the frontend interview priorities: UI states, stacking, state architecture, re-renders, code review).
 10. **J1–J4 Feeds, ranking and search.**
 11. **K1–K6 Testing.**
 
 ### Phase 4: interview mastery
-12. **M1–M8 System design and speaking**, including full mock interviews.
-13. **N1–N8 AI engineering** (for AI-training and evaluation roles).
+12. **M1–M6 System design and speaking**, including full mock interviews. (M7–M8 are practice formats that run all along.)
+13. **N AI engineering** (for AI-training and evaluation roles; the evaluation drill in the weekly rhythm practises it all along).
 14. **L Web and platform fundamentals**: pull in any module as soon as another module needs it.
 
 After the Path: cycle 2 with harder follow-ups, prioritising Shaky topics.
@@ -146,7 +156,7 @@ Why: double clicks, retries, two tabs and webhook redeliveries hit both apps.
 - F5 **Schedules**: crons and time zones; jobs that must follow a reschedule.
 - F6 **Error tracking and alerts**: grouping by fingerprint, alert throttling, cleanup jobs.
 - F7 **Cleanup and orphaned files**: deleting files outside a transaction safely.
-- F8 **The Node event loop under load**: what blocking code does to every request, moving CPU work off the main thread (worker threads, jobs), `EventEmitter` (`.on`, `.once`, errors, listener leaks) and when events beat direct calls.
+- F8 *(pull in only when needed)* **The Node event loop under load**: what blocking code does to every request, moving CPU work off the main thread (worker threads, jobs), `EventEmitter` (`.on`, `.once`, errors, listener leaks) and when events beat direct calls.
 
 ## Track G: Caching and performance
 - G1 **HTTP and edge caching**: Cache-Control, what can be shared vs what is personal, splitting public pages from private data.
@@ -154,7 +164,7 @@ Why: double clicks, retries, two tabs and webhook redeliveries hit both apps.
 - G3 **Redis**: slot holds as courtesy locks, rate-limit counters, TTLs.
 - G4 **Database connections at the edge**: pooling (for example Hyperdrive), one connection per request.
 - G5 **Images and Core Web Vitals**: resizing on the way out, LCP/INP/CLS.
-- G6 **APIs at scale**: REST design and error shapes, versioning and backward compatibility, rate limiting and throttling (who gets limited and what they see), payload size and serialisation, monitoring slow endpoints.
+- G6 *(pull in only when needed)* **APIs at scale**: REST design and error shapes, versioning and backward compatibility, rate limiting and throttling (who gets limited and what they see), payload size and serialisation, monitoring slow endpoints.
 
 ## Track H: Auth, security and privacy
 - H1 **Sessions and OAuth**: cookies, session lifetime and refresh, Google sign-in (Better Auth).
@@ -175,10 +185,10 @@ Why: double clicks, retries, two tabs and webhook redeliveries hit both apps.
 - I6 Stacking contexts and DevTools: why an overlay sits behind another layer.
 - I7 State architecture and re-renders: local vs lifted vs global vs state machine; `memo`, `useMemo`, `useCallback`, and when not to.
 - I8 Code review judgment: required change vs comment; overused `useEffect`; when to extract a hook.
-- I9 CSS layout and responsive design: Flexbox and Grid, mobile first, container and media queries, cross-browser checks, progressive enhancement vs graceful degradation.
-- I10 Styling at scale: CSS Modules, Tailwind and CSS-in-JS (runtime cost, server rendering), design tokens and a small shared component library.
-- I11 State libraries: Context vs Zustand vs Redux Toolkit; when each is worth it; selectors; how to answer "have you used Redux?" honestly.
-- I12 DOM events: bubbling and capture, delegation, `stopPropagation`/`preventDefault`, removing listeners (and `AbortController`), debounce and throttle, finding listener memory leaks in DevTools.
+- I9 *(pull in only when needed)* CSS layout and responsive design: Flexbox and Grid, mobile first, container and media queries, cross-browser checks, progressive enhancement vs graceful degradation.
+- I10 *(pull in only when needed)* Styling at scale: CSS Modules, Tailwind and CSS-in-JS (runtime cost, server rendering), design tokens and a small shared component library.
+- I11 *(pull in only when needed)* State libraries: Context vs Zustand vs Redux Toolkit; when each is worth it; selectors; how to answer "have you used Redux?" honestly.
+- I12 *(pull in only when needed)* DOM events: bubbling and capture, delegation, `stopPropagation`/`preventDefault`, removing listeners (and `AbortController`), debounce and throttle, finding listener memory leaks in DevTools.
 - Build (`lesson-i-frontend/`): one exercise per module, booking-themed, as in the earlier P13–P17 briefs.
 
 ## Track J: Feeds, ranking and search (community app)
@@ -206,8 +216,8 @@ DNS and hosting · HTTP methods, status codes, headers · HTTPS/TLS · how brows
 - M4 Explaining my two real apps end to end in 2 minutes and in 10 minutes.
 - M5 Talking about weak spots honestly: "here's the gap, here's why it exists, here's how I'd fix it".
 - M6 STAR stories from real work only, plus full mock interviews.
-- M7 **Interview bank** (`interview-bank/`): real topics from platform interviews and tests, each mapped to a module here. One question per session in the Speak step; a 6-question mock every two weeks.
-- M8 **Timed coding tests**: 25–45 minute problems in my own editor, no AI, talking out loud: small JS utilities, array/string/object problems, a React component with state, and "fix this broken function". Score: working code, edge cases, clear narration, time used.
+- M7 *(practice format)* **Interview bank** (`interview-bank/`): real topics from platform interviews and tests, each mapped to a module here. One question per session in the Speak step; a 6-question mock every two weeks.
+- M8 *(practice format)* **Timed coding tests**: 25–45 minute problems in my own editor, no AI, talking out loud: small JS utilities, array/string/object problems, a React component with state, and "fix this broken function". Score: working code, edge cases, clear narration, time used.
 
 ## Track N: AI engineering
 How LLMs work · prompting · structured outputs and tool calling · embeddings and RAG · agents and MCP · AI with a fallback (one of my apps calls a model, then a keyword fallback) · evaluating AI-generated code (correctness, edge cases, security) · writing rubrics, test cases and coding tasks for AI training.
@@ -228,6 +238,8 @@ How LLMs work · prompting · structured outputs and tool calling · embeddings 
 - Mercor: a free practice interview you can take as many times as you like; official interviews can be retaken up to three times; some interviews are a deep discussion of past work. Source: talent.docs.mercor.com/support/ai-interview.
 
 ## Why this design (sources)
+- Struggle first: a meta-analysis of 53 studies (166 comparisons) found problem-solving before instruction beats instruction first for conceptual understanding and transfer, when learners have some prior knowledge. Sinha & Kapur (2021), Review of Educational Research, doi:10.3102/00346543211019105.
+- Less guidance as experience grows: methods that help beginners (worked examples, step-by-step guidance) can hurt more experienced learners (the expertise reversal effect). Kalyuga, Ayres, Chandler & Sweller (2003), Educational Psychologist 38(1); Kalyuga (2007), Educational Psychology Review.
 - AI that writes code for you lowers mastery, most of all for debugging; using AI to ask conceptual questions while coding yourself keeps learning high. Anthropic, "How AI assistance impacts the formation of coding skills" (2026): anthropic.com/research/AI-assistance-coding-skills
 - An unrestricted AI tutor works like a crutch; a tutor with guardrails avoids the drop. Bastani et al., PNAS 2025, "Generative AI without guardrails can harm learning".
 - A tutor that gives one step at a time, asks the learner to try first and keeps replies short doubled learning gains. Kestin et al., Scientific Reports 2025, "AI tutoring outperforms in-class active learning". Structure had to come from the platform, not the prompt alone.

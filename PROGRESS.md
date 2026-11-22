@@ -32,9 +32,8 @@ Statuses: Solid · Shaky · Not done · Taught (not checked yet). Track A IDs ke
 | A22 | Classes | Not done | Phase 1. |
 | A23 | extends vs implements | Not done | Interview flagged: explain clearly. Phase 1. |
 | B1–B8 | Time | Not done | Phase 1, first. Came up in a live interview. |
-| I9–I12 | CSS and layout, styling at scale, state libraries, DOM events | Not done | Added 22 Nov from platform interview lists (Phase 3). |
-| F8, G6 | Node event loop under load; APIs at scale | Not done | Added 22 Nov from platform interview lists. |
-| M7–M8 | Interview bank; timed coding tests | Not done | Speak step and weekly timed drill start now. |
+| I9–I12, F8, G6 | CSS and layout, styling at scale, state libraries, DOM events, Node event loop under load, APIs at scale | Pull in only when needed | Not on the Path. Teach only when a real task needs them. |
+| M7–M8 | Interview bank; timed coding tests | Practice formats | Run all along: Speak step and the weekly timed drill. |
 | E2 | Webhooks (was topic 82) | Not done | Interview flagged. Cover event-ID deduplication, concurrent duplicates, ordering, and transactional payment-state updates. |
 
 ## Review queue
@@ -52,7 +51,7 @@ Current level: working towards Level 1.
 |---|---|---|
 | 2026-11-21 | One open-source PR opened (calendar library). | No exercises yet under the new hint rules; spoken answers not yet scored. |
 
-## Help log (deepest hint rung used per exercise; it should go down over time)
+## Help log (deepest hint rung used per exercise; it should go down over time. Rung 4–5 → rebuild from memory next session)
 | Date | Exercise | Deepest rung (0 = none, 5 = key line shown) | Time taken | Notes |
 |---|---|---|---|---|
 

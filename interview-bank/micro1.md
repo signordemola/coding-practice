@@ -71,7 +71,7 @@ How this file is used: see `interview-bank/README.md`.
 | NO3 | Error handling in async Node code | F4 |
 | NO4 | The event loop in server-side JS | A7, F8 |
 | NO5 | Designing async APIs in Node | A6, F8, E2 |
-| NO6 | Preventing race conditions in async code | C2, C3, D |
+| NO6 | Preventing race conditions in async code | C2, C3, D2 |
 | NO7 | Integrating third-party async libraries | A6, F4 |
 | NO8 | Debugging async and event-driven code | R3 |
 | NO9 | Blocking code and the event loop: impact and fixes | F8 |
@@ -82,13 +82,13 @@ How this file is used: see `interview-bank/README.md`.
 |---|---|---|
 | BE1 | Database schema design for large apps | C1, C5 |
 | BE2 | REST APIs for heavy traffic | G6 |
-| BE3 | Data consistency and integrity across services | C2, D, F2 |
+| BE3 | Data consistency and integrity across services | C2, D1, F2 |
 | BE4 | Optimising SQL under high concurrency | C3, C7 |
 | BE5 | Structuring async workflows in scalable back ends | F1, F2 |
 | BE6 | Transactions across multiple services (sagas, outbox) | F2, E3 |
 | BE7 | API versioning | G6 |
 | BE8 | Monitoring and logging API performance | F6 |
-| BE9 | Async error handling and retries | F4, D |
+| BE9 | Async error handling and retries | F4, D2 |
 | BE10 | Enforcing and auditing database security | C8, H8 |
 
 ## API Developer (api-developer-interview-questions)

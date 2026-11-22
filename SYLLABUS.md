@@ -25,17 +25,19 @@ AI tutors help when they make the learner think and hurt when they do the work (
 2. **Predict → Run → Investigate** (PRIMM): I predict what given code does, run it, then trace and explain the differences. New ideas get a short explanation with the official docs link.
 3. **Modify → Make**: I change working code, then build the exercise: `<name>.ts` + `<name>.test.ts` + `<name>-TASK.md`, in ordered parts with tests marked `todo` until I start each part. The last part is always my own edge cases.
 4. **Break and fix**: a bug hunt in the same area: reproduce with a failing test, root cause in one sentence, smallest fix.
-5. **Speak**: one interview question out loud, scored 0–7: Trigger → Data → Processing → External → Failure → Trade-off (or the bug-story order).
-6. **Review later**: re-tested from memory after about 1, 3, 7 and 21 days (`PROGRESS.md` review queue).
+5. **Speak**: one interview question out loud, scored 0–7: Trigger → Data → Processing → External → Failure → Trade-off (or the bug-story order). Take it from `interview-bank/` (M7), matching the module.
+6. **Review later**: re-tested from memory after about 1, 3, 7 and 21 days (`PROGRESS.md` review queue). Each review also starts with a **5-question quick check**: stack-test-style multiple choice on precise details of the current track (see `interview-bank/turing.md`).
 
 Each session mixes topics (interleaving): one main module from the Path, one Track A module, the review queue, one real-app question.
 
 **Production-ready standard for every build** (checklist in `AGENTS.md` section 7): validated input, tested failure paths, safe retries and duplicates, timeouts, money in cents, explicit time zones, no secrets, clear names and types.
 
 ### Weekly practice rhythm (Track R)
-- **2 bug hunts**: Codex writes a small, realistic file (booking, payments, feed, auth) with 1–3 planted bugs from the bug classes in `real-apps/`. I get 25 minutes before any hint: reproduce, write a failing test, fix, explain.
+- **1 timed coding drill** (M8): 25–45 minutes, no AI help, in my editor, talking out loud, as in real platform tests.
+- **2 bug hunts**: one of them may be a **code-review drill** instead: Codex writes a small pull request with planted problems; I write review comments (required change vs suggestion), then fix the worst one. Codex writes a small, realistic file (booking, payments, feed, auth) with 1–3 planted bugs from the bug classes in `real-apps/`. I get 25 minutes before any hint: reproduce, write a failing test, fix, explain.
 - **1 code-reading drill**: one flow from a real open-source repo (see R7), for example the Stripe webhook handler in `nextjs/saas-starter` or the booking-creation path in `calcom/cal.diy`. Trace it from the click or request to the database write, then write one page: what it does, what it assumes, and which failures it handles vs ignores (two requests at once, duplicate webhook, failure after the first write, job retry after partial success, runtime time limit, dropped connection).
 - **1 postmortem or bug write-up**: a 5-line summary: trigger, root cause, fix, lesson, where the same bug could happen in my apps.
+- **Every 2 weeks: one recorded practice interview** on a platform that offers free unlimited practice (Mercor), explaining one of my apps end to end (M4). Log what went badly.
 - **Every 2–3 weeks: one real open-source issue**: reproduce it; if it's fresh and nobody's on it, fix it and open a PR myself.
 
 ## The Path (teaching order)
@@ -51,21 +53,23 @@ R1–R4 in the first two weeks (reading code, reproducing, narrowing, bisecting)
 5. Alongside, from Track A: check A17–A20, finish A4–A5, then A22–A23 (classes, extends vs implements: flagged in an interview).
 
 ### Phase 2: reliability and safety
-6. **F1–F7 Background work and reliability.**
+6. **F1–F8 Background work and reliability.**
 7. **H1–H8 Auth, security and privacy.**
-8. **G1–G5 Caching and performance.**
+8. **G1–G6 Caching, performance and APIs at scale.**
 
 ### Phase 3: product depth
-9. **I1–I8 Frontend and React** (includes the frontend interview priorities: UI states, stacking, state architecture, re-renders, code review).
+9. **I1–I12 Frontend and React** (includes the frontend interview priorities: UI states, stacking, state architecture, re-renders, code review, CSS and layout, DOM events).
 10. **J1–J4 Feeds, ranking and search.**
 11. **K1–K5 Testing.**
 
 ### Phase 4: interview mastery
-12. **M1–M6 System design and speaking**, including full mock interviews.
+12. **M1–M8 System design and speaking**, including full mock interviews.
 13. **N1–N8 AI engineering** (for AI-training and evaluation roles).
 14. **L Web and platform fundamentals**: pull in any module as soon as another module needs it.
 
 After the Path: cycle 2 with harder follow-ups, prioritising Shaky topics.
+
+**Interview pull-ins (the only allowed detour):** when a real interview or test is booked within 7 days, Codex may pull the matching `interview-bank/` questions, quick checks and modules into sessions, logs the detour in `PROGRESS.md`, and returns to the Path afterwards. New topics are never added outside this file.
 
 ---
 
@@ -142,6 +146,7 @@ Why: double clicks, retries, two tabs and webhook redeliveries hit both apps.
 - F5 **Schedules**: crons and time zones; jobs that must follow a reschedule.
 - F6 **Error tracking and alerts**: grouping by fingerprint, alert throttling, cleanup jobs.
 - F7 **Cleanup and orphaned files**: deleting files outside a transaction safely.
+- F8 **The Node event loop under load**: what blocking code does to every request, moving CPU work off the main thread (worker threads, jobs), `EventEmitter` (`.on`, `.once`, errors, listener leaks) and when events beat direct calls.
 
 ## Track G: Caching and performance
 - G1 **HTTP and edge caching**: Cache-Control, what can be shared vs what is personal, splitting public pages from private data.
@@ -149,6 +154,7 @@ Why: double clicks, retries, two tabs and webhook redeliveries hit both apps.
 - G3 **Redis**: slot holds as courtesy locks, rate-limit counters, TTLs.
 - G4 **Database connections at the edge**: pooling (for example Hyperdrive), one connection per request.
 - G5 **Images and Core Web Vitals**: resizing on the way out, LCP/INP/CLS.
+- G6 **APIs at scale**: REST design and error shapes, versioning and backward compatibility, rate limiting and throttling (who gets limited and what they see), payload size and serialisation, monitoring slow endpoints.
 
 ## Track H: Auth, security and privacy
 - H1 **Sessions and OAuth**: cookies, session lifetime and refresh, Google sign-in (Better Auth).
@@ -169,6 +175,10 @@ Why: double clicks, retries, two tabs and webhook redeliveries hit both apps.
 - I6 Stacking contexts and DevTools: why an overlay sits behind another layer.
 - I7 State architecture and re-renders: local vs lifted vs global vs state machine; `memo`, `useMemo`, `useCallback`, and when not to.
 - I8 Code review judgment: required change vs comment; overused `useEffect`; when to extract a hook.
+- I9 CSS layout and responsive design: Flexbox and Grid, mobile first, container and media queries, cross-browser checks, progressive enhancement vs graceful degradation.
+- I10 Styling at scale: CSS Modules, Tailwind and CSS-in-JS (runtime cost, server rendering), design tokens and a small shared component library.
+- I11 State libraries: Context vs Zustand vs Redux Toolkit; when each is worth it; selectors; how to answer "have you used Redux?" honestly.
+- I12 DOM events: bubbling and capture, delegation, `stopPropagation`/`preventDefault`, removing listeners (and `AbortController`), debounce and throttle, finding listener memory leaks in DevTools.
 - Build (`lesson-i-frontend/`): one exercise per module, booking-themed, as in the earlier P13–P17 briefs.
 
 ## Track J: Feeds, ranking and search (community app)
@@ -196,6 +206,8 @@ DNS and hosting · HTTP methods, status codes, headers · HTTPS/TLS · how brows
 - M4 Explaining my two real apps end to end in 2 minutes and in 10 minutes.
 - M5 Talking about weak spots honestly: "here's the gap, here's why it exists, here's how I'd fix it".
 - M6 STAR stories from real work only, plus full mock interviews.
+- M7 **Interview bank** (`interview-bank/`): real topics from platform interviews and tests, each mapped to a module here. One question per session in the Speak step; a 6-question mock every two weeks.
+- M8 **Timed coding tests**: 25–45 minute problems in my own editor, no AI, talking out loud: small JS utilities, array/string/object problems, a React component with state, and "fix this broken function". Score: working code, edge cases, clear narration, time used.
 
 ## Track N: AI engineering
 How LLMs work · prompting · structured outputs and tool calling · embeddings and RAG · agents and MCP · AI with a fallback (one of my apps calls a model, then a keyword fallback) · evaluating AI-generated code (correctness, edge cases, security) · writing rubrics, test cases and coding tasks for AI training.
@@ -209,6 +221,11 @@ How LLMs work · prompting · structured outputs and tool calling · embeddings 
 - Resend keeps idempotency keys for 24 hours. Source: resend.com/docs.
 - Inngest retries a step 4 times after the first attempt by default. Source: inngest.com/docs.
 - Cloudflare `waitUntil` can extend work for up to 30 seconds after the response. Source: developers.cloudflare.com/workers.
+
+## Platform interview facts checked on 2026-11-22 (re-check before relying on them)
+- micro1: public practice pages per role (10 questions each) plus a free 18-minute AI practice interview; the real interview is 20–40 minutes, about 7 minutes per skill, and some roles add a coding exercise. Sources: micro1.ai/interview-prep, library.micro1.ai.
+- Turing: vetting = profile, work-experience survey, tech-stack multiple-choice tests (45–120 minutes; React JS, React Hooks, Node JS and others) and a live coding challenge; a failed stack test can be retaken after three months. Source: turing.com/blog/turing-developer-test-preparation-tips.
+- Mercor: a free practice interview you can take as many times as you like; official interviews can be retaken up to three times; some interviews are a deep discussion of past work. Source: talent.docs.mercor.com/support/ai-interview.
 
 ## Why this design (sources)
 - AI that writes code for you lowers mastery, most of all for debugging; using AI to ask conceptual questions while coding yourself keeps learning high. Anthropic, "How AI assistance impacts the formation of coding skills" (2026): anthropic.com/research/AI-assistance-coding-skills

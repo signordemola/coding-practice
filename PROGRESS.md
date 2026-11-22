@@ -32,6 +32,9 @@ Statuses: Solid · Shaky · Not done · Taught (not checked yet). Track A IDs ke
 | A22 | Classes | Not done | Phase 1. |
 | A23 | extends vs implements | Not done | Interview flagged: explain clearly. Phase 1. |
 | B1–B8 | Time | Not done | Phase 1, first. Came up in a live interview. |
+| I9–I12 | CSS and layout, styling at scale, state libraries, DOM events | Not done | Added 22 Nov from platform interview lists (Phase 3). |
+| F8, G6 | Node event loop under load; APIs at scale | Not done | Added 22 Nov from platform interview lists. |
+| M7–M8 | Interview bank; timed coding tests | Not done | Speak step and weekly timed drill start now. |
 | E2 | Webhooks (was topic 82) | Not done | Interview flagged. Cover event-ID deduplication, concurrent duplicates, ordering, and transactional payment-state updates. |
 
 ## Review queue
@@ -74,6 +77,22 @@ Practice questions from `real-apps/`. Grade each spoken answer.
 - Later in Track B: rebuild `slots` with Temporal and compare (B7).
 - `lesson-e-payments/`: webhook handler for duplicate, out-of-order and concurrent events (when E2 begins).
 - `lesson-i-frontend/`: the five frontend exercises for I5–I8 (when Track I begins).
+
+## Interview bank (`interview-bank/`; see its README)
+Speak step: one question per session, score 0–7; under 5 goes to the review queue. Priority: RE and JS first, then NO and BE, then AP.
+| Date | Question id | Score | Missing |
+|---|---|---|---|
+| | | | |
+
+## Quick checks, timed drills and practice interviews
+| Date | Type (quick check / timed drill / mock / platform practice) | Topic | Result (score, time used) | Notes |
+|---|---|---|---|---|
+| | | | | |
+
+## Detours (interview pull-ins only)
+| Date | Interview or test | Modules pulled in | Back on the Path |
+|---|---|---|---|
+| | | | |
 
 ## Interview feedback to train against
 - Explain flows end to end with architecture detail: database schema, scheduling mechanism, email/payment provider integration.

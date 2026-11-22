@@ -10,6 +10,8 @@ TypeScript practice for understanding real-world apps: time zones, payments, con
 | 02 | A: TypeScript basics | [`booking-payload.ts`](lesson-02/booking-payload.ts), [`booking-functions.ts`](lesson-02/booking-functions.ts), [`coverage.md`](lesson-02/coverage.md). Coverage and gaps for A9–A23. |
 | b-time | B: Time | [`predict.ts`](lesson-b-time/predict.ts), [`slots`](lesson-b-time/slots-TASK.md) (build: slots across zones, buffers, validation, DST), [`booking-window`](lesson-b-time/booking-window-TASK.md) (bug hunt). Tests in `*.test.ts`. |
 
+Interview topics from platform tests, mapped to the syllabus, are in [`interview-bank/`](interview-bank/).
+
 The examples use booking data: prices, deposits and balances.
 
 ## Run the lessons

@@ -23,7 +23,7 @@ One file for every role. Organised by **topic**, not by job: when a new role or 
 - Part C: TypeScript (T1–T3)
 - Part D: Full-stack fundamentals (F1–F5)
 - Part E: Debugging and problem solving (D1, D2)
-- Part F: Coding patterns (P0, then practice in `lesson-m8-arrays-hashing/`)
+- Part F: Coding patterns (P0, then practice in `lesson-04/`)
 - Part G: Ownership stories (kept private)
 - Part H: Interview log
 
@@ -1408,7 +1408,7 @@ The micro1 Senior Frontend coding task (24 Nov 2026) was arrays and hashing ("co
 
 **The one big idea:** use a **`Map` (or object) as a lookup table**. Looking something up in a Map is O(1), so one pass through the array (O(n)) is enough, instead of nested loops (O(n²)).
 
-**Practise in `lesson-m8-arrays-hashing/`**: the task and tests are there; you write the code. Solutions are never kept in this repo.
+**Practise in `lesson-04/`**: the task and tests are there; you write the code. Solutions are never kept in this repo.
 
 ## P1. Count how often each item appears (frequency count)
 Problem: given `["lash", "brow", "lash", "nails", "lash"]`, return how many times each service was booked.
@@ -1462,4 +1462,4 @@ Every interview: what was asked, what I couldn't answer, what was added here.
 | Date | Role | Asked about | Gaps | Added |
 |---|---|---|---|---|
 | 19 Nov 2026 | micro1 Backend | Backend workflows, idempotency, TypeScript | End-to-end flow detail; `interface` vs `type`, `implements` vs `extends` | Part C; F1; follow-ups in A and B |
-| 24 Nov 2026 | micro1 Senior Frontend (JavaScript) | JS, React, Redux Toolkit; coding: arrays and hashing (counting / simulation) | `this` and binding, older JS syntax, Redux Toolkit | J11, J12, R11, Part F, `lesson-m8-arrays-hashing/` |
+| 24 Nov 2026 | micro1 Senior Frontend (JavaScript) | JS, React, Redux Toolkit; coding: arrays and hashing (counting / simulation) | `this` and binding, older JS syntax, Redux Toolkit | J11, J12, R11, Part F, `lesson-04/` |

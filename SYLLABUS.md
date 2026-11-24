@@ -95,7 +95,7 @@ Why: paid roles and interviews test whether I can work in code I didn't write. M
 - R8 **Learning from other people's failures**: public postmortems (danluu/post-mortems) and debugging stories; one a week, linked to my apps.
 - R9 **Explaining a fix**: the bug-story format for interviews and PRs: symptom → reproduction → hypothesis → evidence → root cause → fix → test → prevention. Keep each story under two minutes; record it and cut the filler.
 - Sources: Julia Evans on debugging (jvns.ca: "Some ways to get better at debugging", "A debugging manifesto"), David Agans' *Debugging* (nine rules), git-scm.com/docs/git-bisect, github.com/danluu/post-mortems, docs.stripe.com/webhooks.
-- Build (`lesson-r-debugging/`): bug-hunt files with their `-TASK.md`, one folder of notes per real-repo issue I investigate.
+- Build (the next free numbered `lesson-NN/` folder): bug-hunt files with their `-TASK.md`, one folder of notes per real-repo issue I investigate.
 
 ## Track A: JavaScript and TypeScript core
 IDs A1–A38 keep the old topic numbers, so earlier progress still applies. Teach each one with an example from the apps (booking status unions, Zod-validated payloads, money in cents).
@@ -113,7 +113,7 @@ Why: one app books appointments across zones; the other shows "3 hours ago", mon
 - B6 **date-fns + `@date-fns/tz`** (what my booking app uses): TZDate, building slots in the studio zone, formatting back.
 - B7 **Temporal**: Instant, ZonedDateTime, PlainDate, PlainYearMonth, Duration, and the disambiguation options for DST. Compare each with how my apps do it today. Check current browser and Node support before stating it.
 - B8 **Storing and showing time**: Postgres `timestamp` vs `timestamptz`, the session time zone, `interval '1 day'` vs 24 hours; `Intl.DateTimeFormat` and relative time; server vs browser rendering (hydration mismatches); cached pages that freeze "minutes ago".
-- Exercises ready in `lesson-b-time/`: `predict.ts` (Part 0 of the slots task), `slots` (build: slots across zones, buffers, notice, validation, DST days) and `booking-window` (bug hunt: two support tickets). Next: rebuild `slots` with Temporal and compare (B7).
+- Exercises ready in `lesson-03/`: `predict.ts` (Part 0 of the slots task), `slots` (build: slots across zones, buffers, notice, validation, DST days) and `booking-window` (bug hunt: two support tickets). Next: rebuild `slots` with Temporal and compare (B7).
 - Speak: "Where does an appointment time live and what does the column mean?" · "What breaks on a DST change?" · "Why is a month stored as a date, not a timestamp?"
 
 ## Track C: Data correctness in Postgres

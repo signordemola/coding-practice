@@ -1,6 +1,6 @@
 # Progress
 
-Next session: start Track B with `lesson-b-time/`. Order: Part 0 (predict.ts) → B1–B2 taught PRIMM-style → slots Parts 1–2. Track A: check A17 (narrowing). Review queue: A16, A11. Track R this week: the `booking-window` bug hunt, then R1 with the first code-reading drill. Still open: `lesson-01/a1-a8-gaps-TASK.md`.
+Next session: start Track B with `lesson-03/`. Order: Part 0 (predict.ts) → B1–B2 taught PRIMM-style → slots Parts 1–2. Track A: check A17 (narrowing). Review queue: A16, A11. Track R this week: the `booking-window` bug hunt, then R1 with the first code-reading drill. Still open: `lesson-01/a1-a8-gaps-TASK.md`.
 Cycle: 1
 Last session: 2026-11-20 — P0 refresh for topics 11–13; topic 16 taught and its practice moved to lesson-02 (Stage 2).
 
@@ -71,8 +71,8 @@ Practice questions from `real-apps/`. Grade each spoken answer.
 ## Open build tasks
 - lesson-01 Stage 1 gaps: complete the values/scope exercise, bind and prototype work, and `Promise.allSettled` practice in `lesson-01/a1-a8-gaps-TASK.md`.
 - lesson-02 booking events handler: the earlier brief was not saved in the repo; re-issue it for A18–A20.
-- `lesson-b-time/slots-TASK.md`: Parts 0–5 (ready, tests written).
-- `lesson-b-time/booking-window-TASK.md`: bug hunt, two tickets (ready).
+- `lesson-03/slots-TASK.md`: Parts 0–5 (ready, tests written).
+- `lesson-03/booking-window-TASK.md`: bug hunt, two tickets (ready).
 - Later in Track B: rebuild `slots` with Temporal and compare (B7).
 - `lesson-e-payments/`: webhook handler for duplicate, out-of-order and concurrent events (when E2 begins).
 - `lesson-i-frontend/`: the five frontend exercises for I5–I8 (when Track I begins).
@@ -91,7 +91,7 @@ Speak step: one question per session, score 0–7; under 5 goes to the review qu
 ## Detours (interview pull-ins only)
 | Date | Interview or test | Modules pulled in | Back on the Path |
 |---|---|---|---|
-| 24 Nov 2026 | micro1 Senior Frontend (done 24 Nov); micro1 New Grad (due 25 Nov); micro1 Internal Platforms | M8 (`lesson-m8-arrays-hashing/`), `interview-bank/study-guide.md` | After the micro1 interviews |
+| 24 Nov 2026 | micro1 Senior Frontend (done 24 Nov); micro1 New Grad (due 25 Nov); micro1 Internal Platforms | M8 (`lesson-04/`), `interview-bank/study-guide.md` | After the micro1 interviews |
 
 ## Interview feedback to train against
 - Explain flows end to end with architecture detail: database schema, scheduling mechanism, email/payment provider integration.
@@ -101,7 +101,7 @@ Speak step: one question per session, score 0–7; under 5 goes to the review qu
 - Source: micro1 interview feedback, Nov 2026.
 - Frontend/UI: interaction states and assumptions, stacking contexts and DevTools, state architecture, React re-renders and memoization, and code review judgment.
 - Software Engineer: move Stripe webhook idempotency, event-ID deduplication, race conditions, and transactional payment-state updates earlier.
-- micro1 Senior Frontend (24 Nov 2026): couldn't answer older JS (`this`, `call`/`apply`/`bind`) and Redux Toolkit questions; coding task was arrays and hashing (counting / simulation). Study guide J11, J12, R11 and Part F; drill in `lesson-m8-arrays-hashing/`.
+- micro1 Senior Frontend (24 Nov 2026): couldn't answer older JS (`this`, `call`/`apply`/`bind`) and Redux Toolkit questions; coding task was arrays and hashing (counting / simulation). Study guide J11, J12, R11 and Part F; drill in `lesson-04/`.
 - Time zones, date-fns and Temporal came up in an expert-network interview (Nov 2026). My production apps use date-fns + `@date-fns/tz` and `Intl`, not Temporal: describe Temporal as what I'd use next and why.
 
 ## Notes

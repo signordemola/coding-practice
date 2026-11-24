@@ -11,7 +11,7 @@
 - Don't edit the given expectations in `slots.test.ts`. Add your own tests in Part 5.
 
 ## Part 0: Predict (10 minutes)
-Open `predict.ts`. **Without running it**, write down what each numbered line prints (1–9). Then run `node lesson-b-time/predict.ts` and compare.
+Open `predict.ts`. **Without running it**, write down what each numbered line prints (1–9). Then run `node lesson-03/predict.ts` and compare.
 For every line you got wrong, write one sentence: what you assumed vs what's true. Lines 7 and 8 differ: explain why, and why line 8 can give a different answer on your Mac than on a server.
 
 ## Part 1: Wall-clock hours → UTC instants
@@ -38,12 +38,12 @@ Remove `{ todo: "Part 4" }`.
 Add at least two tests nobody gave you (ideas are in the test file). At least one should fail at first and make you change code.
 
 ## Done when
-- `pnpm typecheck` passes and `node --test lesson-b-time/slots.test.ts` shows **0 todo, 0 fail**.
+- `pnpm typecheck` passes and `node --test lesson-03/slots.test.ts` shows **0 todo, 0 fail**.
 - You can explain, without notes, in under 2 minutes: where a booking time lives (instant vs wall time vs plain date), how you turn "09:00 in New York" into an instant, and what happens on both DST days.
 - Production-ready checklist (from `AGENTS.md`) reviewed.
 
 ## Verify
 ```bash
 pnpm typecheck
-node --test lesson-b-time/slots.test.ts
+node --test lesson-03/slots.test.ts
 ```

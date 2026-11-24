@@ -1,4 +1,4 @@
-// Tests for slots.ts. Run from the repo root: node --test lesson-b-time/slots.test.ts
+// Tests for slots.ts. Run from the repo root: node --test lesson-03/slots.test.ts
 // Each part is marked `todo`, so unfinished parts are reported but don't fail the run.
 // When you start a part, delete its `{ todo: ... }` option so its tests count for real.
 // Add your own edge-case tests at the bottom; don't edit the existing expectations.

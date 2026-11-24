@@ -20,5 +20,5 @@
 ## Verify
 ```bash
 pnpm typecheck
-node --test lesson-b-time/booking-window.test.ts
+node --test lesson-03/booking-window.test.ts
 ```

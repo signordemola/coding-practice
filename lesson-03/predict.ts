@@ -1,6 +1,6 @@
 // Track B (Time) · Part 0 of slots-TASK.md: PREDICT before you run.
 // Write your prediction for each numbered line in slots-TASK.md first, then run:
-//   node lesson-b-time/predict.ts
+//   node lesson-03/predict.ts
 // Don't change this file until you've compared your predictions with the output.
 
 /** "YYYY-MM-DD HH:MM" wall-clock time of an instant in a zone (24-hour). */

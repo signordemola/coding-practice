@@ -1,5 +1,5 @@
 // Tests for booking-window.ts. These happy-path tests pass today, which is why the bugs shipped.
-// Run from the repo root: node --test lesson-b-time/booking-window.test.ts
+// Run from the repo root: node --test lesson-03/booking-window.test.ts
 
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";

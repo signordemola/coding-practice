@@ -59,12 +59,12 @@ Log the deepest rung used per exercise in `PROGRESS.md` (Help log). It should go
 ## 6. Track R (every week, see `SYLLABUS.md`)
 - **1 timed drill (M8):** one problem, 25–45 minutes, no hints while the timer runs; afterwards review it with the hint ladder. Never write the solution.
 - **2 bug hunts:** one may be swapped for a code-review drill or an evaluation drill (see SYLLABUS weekly rhythm). Otherwise you write a realistic file with 1–3 planted bugs from the "gaps to check" in `real-apps/` and the current track, plus passing happy-path tests. The `-TASK.md` gives symptoms only, as support tickets. I reproduce with a failing test, find the root cause, fix, explain. Never reveal the cause.
-- **1 code-reading drill:** one flow in a real open-source repo (SYLLABUS R7). Check the repo live first; never rely on memory for file paths. I trace it and write a one-page note in `lesson-r-debugging/`.
+- **1 code-reading drill:** one flow in a real open-source repo (SYLLABUS R7). Check the repo live first; never rely on memory for file paths. I trace it and write a one-page note in the Track R lesson folder (the next free `lesson-NN/` number when first needed).
 - **1 postmortem:** a public one relevant to the track; I summarise it in 5 lines.
 - **Every 2–3 weeks:** a real open-source issue. You help me find a fresh one (no assignee, no linked PR); I fix it and open the PR myself.
 Every 2 weeks I also do one platform practice interview (SYLLABUS weekly rhythm). Log each in the Track R table in `PROGRESS.md`.
 
-## 7. Exercise format (follow `lesson-b-time/` as the model)
+## 7. Exercise format (follow `lesson-03/` as the model)
 - Three files per exercise: `<name>.ts` (starter: types and signatures, or buggy code), `<name>.test.ts` (node:test + node:assert/strict), `<name>-TASK.md` (goal, real-app link, rules, ordered parts, done-when, verify commands).
 - Build exercises: tests grouped by part, each part marked `{ todo: "Part N" }` so unfinished work doesn't fail the run. I remove the `todo` when I start a part. The last part is always "your own edge cases".
 - Bug hunts: buggy code + passing happy-path tests + an empty "your reproductions" block.
@@ -83,7 +83,7 @@ Every 2 weeks I also do one platform practice interview (SYLLABUS weekly rhythm)
 - Official first. Open the current page before teaching and list 1–3 links: typescriptlang.org/docs · developer.mozilla.org · nodejs.org/docs · react.dev · nextjs.org/docs · docs.stripe.com · postgresql.org/docs · owasp.org · web.dev · git-scm.com/docs · the repo's own README/CONTRIBUTING for open-source work. Label anything else "unofficial". If you can't check something, say "not verified, check <link>".
 - Teach the current stable way; call out legacy patterns.
 - Files: `SYLLABUS.md` (the spec and teaching order; don't change the Path unless I ask) · `PROGRESS.md` (status log; keep its format) · `real-apps/` (my two production apps, generic; read its README) · `interview-bank/` (platform interview topics mapped to modules; read its README) · `sessions/YYYY-MM-DD.md`.
-- Folders: `lesson-01/` (A1–A8), `lesson-02/` (A9–A23), `lesson-03/` (A24–A38), other tracks `lesson-<letter>-<slug>/` (e.g. `lesson-b-time/`, `lesson-r-debugging/`).
+- Folders: **every lesson folder is numbered in the order it is created**: `lesson-01/` (A1–A8), `lesson-02/` (A9–A23), `lesson-03/` (Track B: time), `lesson-04/` (M8: arrays and hashing drill). The next new folder is the next free number (`lesson-05/`, …), whatever the track; the README lessons table says which module each number holds. Never use letters or names in lesson folder names.
 - Commands (Node 26+, from the repo root): `pnpm install` · `pnpm typecheck` · `pnpm test` · `pnpm check` (both) · `node --test path/to/file.test.ts` · `node path/to/file.ts`. Node runs TypeScript by stripping types, so only erasable syntax is allowed (no enums, namespaces or constructor parameter properties); `tsc` does the type-checking.
 
 ## 10. Done means (check every item before ending a session)

@@ -13,7 +13,7 @@ This is my learning repo. Follow `AGENTS.md` (the thinking contract and hint lad
 Use this unless I clearly ask for mode 2.
 - Quiz me from `interview-bank/study-guide.md`, `interview-bank/micro1.md` and `interview-bank/turing.md`. One question at a time.
 - **Never read the study guide's answers to me.** I answer first, out loud or typed. Then score with the spoken-answer rubric in `AGENTS.md` section 4 (0–7), say what was missing, and let me answer again.
-- For coding exercises (`lesson-*/`, e.g. `lesson-m8-arrays-hashing/`), follow the `-TASK.md` parts in order and only give hints by the ladder.
+- For coding exercises (`lesson-*/`, e.g. `lesson-04/`), follow the `-TASK.md` parts in order and only give hints by the ladder.
 - When I'm preparing for a specific role, use the **Role map** at the top of the study guide to pick questions.
 
 ### 2. Deep-dive mode (a separate chat, when I ask)

@@ -9,6 +9,7 @@ TypeScript practice for understanding real-world apps: time zones, payments, con
 | 01 | A: JavaScript core | [`deposit.ts`](lesson-01/deposit.ts), [`fetch-bookings.ts`](lesson-01/fetch-bookings.ts), [`event-loop.ts`](lesson-01/event-loop.ts), [`a1-a8-gaps-TASK.md`](lesson-01/a1-a8-gaps-TASK.md). Covers parts of A3, A4 and A6–A8. The task fills gaps in A1, A2, A4, A5 and A6. |
 | 02 | A: TypeScript basics | [`booking-payload.ts`](lesson-02/booking-payload.ts), [`booking-functions.ts`](lesson-02/booking-functions.ts), [`coverage.md`](lesson-02/coverage.md). Coverage and gaps for A9–A23. |
 | b-time | B: Time | [`predict.ts`](lesson-b-time/predict.ts), [`slots`](lesson-b-time/slots-TASK.md) (build: slots across zones, buffers, validation, DST), [`booking-window`](lesson-b-time/booking-window-TASK.md) (bug hunt). Tests in `*.test.ts`. |
+| m8-arrays-hashing | M8: Timed coding drill (interview pull-in) | [`arrays-hashing`](lesson-m8-arrays-hashing/arrays-hashing-TASK.md) (build: counting, duplicates, grouping, two-sum, top K, first unique, simulation). |
 
 Interview topics from platform tests, mapped to the syllabus, are in [`interview-bank/`](interview-bank/).
 

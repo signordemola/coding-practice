@@ -7,6 +7,7 @@ Real topics that platform interviews and tests ask about, each mapped to a modul
 |---|---|---|
 | `micro1.md` | micro1 | Interview topics from 7 practice roles closest to my work |
 | `turing.md` | Turing | Test format and quick-check topics for stack tests and live coding |
+| `study-guide.md` | All roles | My reference notes, one file for every role, organised by topic, with a role map and an interview log. Tutors quiz me from it; they never read the answers to me. |
 
 ## How Codex uses it
 - **Speak step (every session):** one question matching today's module. Score 0–7 with the rubric in `AGENTS.md`. Log it in `PROGRESS.md` → Interview bank. Under 5 goes to the review queue.

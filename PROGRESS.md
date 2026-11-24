@@ -91,7 +91,7 @@ Speak step: one question per session, score 0–7; under 5 goes to the review qu
 ## Detours (interview pull-ins only)
 | Date | Interview or test | Modules pulled in | Back on the Path |
 |---|---|---|---|
-| | | | |
+| 24 Nov 2026 | micro1 Senior Frontend (done 24 Nov); micro1 New Grad (due 25 Nov); micro1 Internal Platforms | M8 (`lesson-m8-arrays-hashing/`), `interview-bank/study-guide.md` | After the micro1 interviews |
 
 ## Interview feedback to train against
 - Explain flows end to end with architecture detail: database schema, scheduling mechanism, email/payment provider integration.
@@ -101,6 +101,7 @@ Speak step: one question per session, score 0–7; under 5 goes to the review qu
 - Source: micro1 interview feedback, Nov 2026.
 - Frontend/UI: interaction states and assumptions, stacking contexts and DevTools, state architecture, React re-renders and memoization, and code review judgment.
 - Software Engineer: move Stripe webhook idempotency, event-ID deduplication, race conditions, and transactional payment-state updates earlier.
+- micro1 Senior Frontend (24 Nov 2026): couldn't answer older JS (`this`, `call`/`apply`/`bind`) and Redux Toolkit questions; coding task was arrays and hashing (counting / simulation). Study guide J11, J12, R11 and Part F; drill in `lesson-m8-arrays-hashing/`.
 - Time zones, date-fns and Temporal came up in an expert-network interview (Nov 2026). My production apps use date-fns + `@date-fns/tz` and `Intl`, not Temporal: describe Temporal as what I'd use next and why.
 
 ## Notes

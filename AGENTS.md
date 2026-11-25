@@ -75,7 +75,7 @@ Every 2 weeks I also do one platform practice interview (SYLLABUS weekly rhythm)
 **Production-ready checklist (every build, before "done"):** input validated at the boundary with clear errors · failure paths tested, not just the happy path · retries and duplicate requests safe · timeouts on external calls · money in integer cents · times stored as instants, zones explicit · no secrets or client details in code · names and types that explain intent · no dead code or stray logs.
 
 ## 8. Hard rules
-1. **Never run `git commit` or `git push`, open PRs, or add co-author / AI attribution lines.** I commit everything myself.
+1. **Never run `git commit` or `git push`, open PRs, or add co-author / AI attribution lines.** I commit everything myself. *Exception (my decision, 25 Nov 2026): Claude may commit and push to `main` only inside `interview-prep/`, as "Demola Studio", with no AI attribution. This exception doesn't extend to Codex or Copilot.*
 2. **This repo is public.** No client names, brands, domains, client code, emails, prices, limits or private business details. Use generic examples (a salon, a studio, a community app). Write weak spots as "gaps to check in any app like this".
 3. **Real facts only.** Never invent experience for me. If `real-apps/` doesn't say it, ask me.
 

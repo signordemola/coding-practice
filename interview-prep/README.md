@@ -19,7 +19,7 @@ One place for everything I study before platform interviews (micro1, Mercor, Tur
 | 01 | [JavaScript](modules/01-javascript/README.md): 13 topics, runnable checks, practice questions, mock round | Done (26 Nov 2026) |
 | 02 | [TypeScript](modules/02-typescript/README.md): 12 topics, compiler-checked examples, practice questions, mock round | Done (26 Nov 2026) |
 | 03 | [React / frontend](modules/03-react/README.md): 13 topics incl. Redux Toolkit, checks run on real React 19.3, practice questions, mock round | Done (26 Nov 2026) |
-| 04 | Node.js + REST APIs | Not started |
+| 04 | [Node.js + REST APIs](modules/04-node-rest/README.md): 7 topics, runnable checks against a small booking API, practice questions, mock round | Done (26 Nov 2026) |
 | 05 | Algorithms, data structures + testing | Not started |
 | 06 | SQL / PostgreSQL | Not started |
 | 07 | Python + FastAPI | Not started |

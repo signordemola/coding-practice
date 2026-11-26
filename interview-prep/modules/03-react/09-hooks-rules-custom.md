@@ -3,7 +3,7 @@
 **Sources (react.dev, read in full unless marked):**
 [Rules of Hooks](https://react.dev/reference/rules/rules-of-hooks) ·
 [State: A Component's Memory: "How does React know which state to return?"](https://react.dev/learn/state-a-components-memory#how-does-react-know-which-state-to-return) (that section) ·
-[Reusing Logic with Custom Hooks](https://react.dev/learn/reusing-logic-with-custom-hooks) ·
+[Reusing Logic with Custom Hooks](https://react.dev/learn/reusing-logic-with-custom-hooks) (headings, bold statements, lists and the "use prefix" note) ·
 [`use`](https://react.dev/reference/react/use) (the parts on calling it conditionally) ·
 [`useSyncExternalStore`](https://react.dev/reference/react/useSyncExternalStore) (reference and caveats)
 

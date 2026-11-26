@@ -2,7 +2,7 @@
 
 Effects and the component lifecycle come up in almost every React interview, so this topic is starred.
 
-**Sources (react.dev, read in full):**
+**Sources (react.dev; the first two read in full, the next three read through headings, bold statements, lists and their key code — see the module README):**
 [Synchronizing with Effects](https://react.dev/learn/synchronizing-with-effects) ·
 [You Might Not Need an Effect](https://react.dev/learn/you-might-not-need-an-effect) ·
 [Lifecycle of Reactive Effects](https://react.dev/learn/lifecycle-of-reactive-effects) ·

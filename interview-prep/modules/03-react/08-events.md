@@ -1,7 +1,7 @@
 # 08. Events: handlers, propagation, and React's delegation at the root
 
 **Sources:**
-- react.dev (read in full): [Responding to Events](https://react.dev/learn/responding-to-events)
+- react.dev (read through headings, bold statements, lists and the propagation sections): [Responding to Events](https://react.dev/learn/responding-to-events)
 - legacy.reactjs.org: [React v17.0 Release Candidate](https://legacy.reactjs.org/blog/2020/08/10/react-v17-rc.html) (10 Aug 2020), section "Changes to Event Delegation" and the other event changes. Read through the web fetcher, so a summary. I didn't find this explained on the current react.dev pages I read.
 
 **Run the checks:** `node interview-prep/modules/03-react/examples/run-all.js` (this topic: `examples/08-events.tsx`)

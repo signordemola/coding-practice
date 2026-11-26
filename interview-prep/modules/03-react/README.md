@@ -4,8 +4,9 @@
 
 **How it was built (26 Nov 2026):**
 - **react.dev**, read from its source repository (`reactjs/react.dev`, commit `15653c0`, 24 Nov 2026). The pages don't carry their own dates, so that commit is the date.
-  - "Learn" pages were read in full.
-  - Long reference pages were read in full for their reference, caveats and the usage sections used here; each topic lists exactly what was read.
+  - Most "Learn" pages were read in full (all prose; long demo code skipped).
+  - **Five Learn pages were read through a filter** (headings, bold statements, lists, notes and the code I quote) rather than every sentence: Lifecycle of Reactive Effects, Separating Events from Effects, Removing Effect Dependencies, Reusing Logic with Custom Hooks, Responding to Events. Their key code sections were then read directly.
+  - Long reference pages were read for their reference, caveats and the usage sections used here; each topic lists what was read.
   - Live demo code (sandbox CSS, long demo files) was skimmed, not studied line by line.
 - **React versions (npm, 26 Nov 2026):** `react`/`react-dom` 19.3.1 (19.3.0 released 9 Sep 2026). The React 19, React 19.3 and React Compiler 1.0 release posts were read for what's new.
 - **Redux:** redux-toolkit.js.org (`reduxjs/redux-toolkit`, commit `b87a80f`, 25 Nov 2026) and redux.js.org (`reduxjs/redux`, commit `ce8d836`, 23 Nov 2026). Versions: `@reduxjs/toolkit` 2.15.0, `react-redux` 9.3.1.

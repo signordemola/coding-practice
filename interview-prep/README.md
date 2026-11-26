@@ -30,8 +30,12 @@ One place for everything I study before platform interviews (micro1, Mercor, Tur
 
 | Role | Platform | Status | Page |
 |---|---|---|---|
-| Vercel Specialist | micro1 | Interview pending (finish by 27 Nov, 8 pm WAT) | [roles/micro1-vercel-specialist.md](roles/micro1-vercel-specialist.md) |
 | Software Engineer, Open Source Contributions | micro1 | Interview pending (finish by 27 Nov, 8 pm WAT) | [roles/micro1-open-source-contributions.md](roles/micro1-open-source-contributions.md) |
+| Applied Engineer, Evaluations Role | Mercor | 2 of 4 steps done: General Interview + Open source contributor left | [roles/mercor-applied-engineer-evaluations.md](roles/mercor-applied-engineer-evaluations.md) |
+| AI Trainer | OpenTrain | AI interview not started | [roles/opentrain-ai-trainer.md](roles/opentrain-ai-trainer.md) |
+| Software Engineer, New Grad (×2) | micro1 | Interview pending (no last date shown) | [roles/micro1-software-engineer-new-grad.md](roles/micro1-software-engineer-new-grad.md) |
+| Software Engineer, Internal Platforms | micro1 | Interview pending (no last date shown) | [roles/micro1-software-engineer-internal-platforms.md](roles/micro1-software-engineer-internal-platforms.md) |
+| Vercel Specialist | micro1 | Interview done 26 Nov 2026, under review | [roles/micro1-vercel-specialist.md](roles/micro1-vercel-specialist.md) |
 
 More role pages are added as roles come up. Older roles are still covered in `../interview-bank/study-guide.md`.
 

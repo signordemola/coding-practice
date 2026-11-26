@@ -1,6 +1,6 @@
 # micro1 — Vercel Specialist
 
-**Pay (from the listing):** $70–130/hr, contract, Remote. **Applied:** 25 Nov 2026, 21:27 WAT. **Status:** Interview pending (micro1 dashboard, 25 Nov 21:35).
+**Pay (from the listing):** $70–130/hr, contract, Remote. **Applied:** 25 Nov 2026, 21:27 WAT. **Status:** Interview done on 26 Nov 2026 (AI interview + test questions in a form-submission exercise). Under review (micro1 dashboard, 26 Nov 2026).
 
 **Deadline:** the interview pages say "last date to complete" **Nov 27, 08:27 pm** (Vercel) and **08:32 pm** (Open Source), with no time zone named. The email says each link expires 48 hours after applying (≈ 21:27 WAT on 27 Nov). **To be safe, finish both before 8:00 pm WAT on Thursday 27 Nov.**
 

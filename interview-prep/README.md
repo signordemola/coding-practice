@@ -7,7 +7,8 @@ One place for everything I study before platform interviews (micro1, Mercor, Tur
 
 ## How each module is built
 - **Official docs, read in full, never from memory:** MDN, typescriptlang.org, react.dev, nodejs.org, postgresql.org, docs.python.org, fastapi.tiangolo.com, vercel.com/docs, nextjs.org, docs.stripe.com, code.visualstudio.com, owasp.org, and so on.
-- **Sources on every point:** each section names its source page and that page's last-updated date. Anything that is my reasoning rather than a doc statement is marked as such.
+- **Sources on every point:** each section names its source page and that page's last-updated date (for MDN, which has no per-page dates, the date of the source snapshot). Anything that is my reasoning rather than a doc statement is marked as such.
+- **Code is run, not assumed:** where a module has code, its `examples/` folder asserts every behaviour it describes.
 - **Format:** explanation, worked examples, common traps, then practice questions with answers to say out loud.
 - **Real facts only:** nothing here claims experience I don't have.
 
@@ -15,7 +16,7 @@ One place for everything I study before platform interviews (micro1, Mercor, Tur
 
 | # | Module | Status |
 |---|---|---|
-| 01 | JavaScript | In progress |
+| 01 | [JavaScript](modules/01-javascript/README.md): 13 topics, runnable checks, practice questions, mock round | Done (26 Nov 2026) |
 | 02 | TypeScript | Not started (handbook answers for the most-asked questions are in `roles/micro1-open-source-contributions.md`) |
 | 03 | React / frontend | Not started |
 | 04 | Node.js + REST APIs | Not started |

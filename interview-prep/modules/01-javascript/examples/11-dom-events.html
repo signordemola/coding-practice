@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Topic 11, part 2: bubbling, capture, delegation</title>
+    <style>
+      body { font-family: system-ui, sans-serif; margin: 2rem; }
+      #grid { display: grid; grid-template-columns: repeat(4, 6rem); gap: 0.5rem; }
+      .slot { border: 1px solid #888; padding: 0.5rem; cursor: pointer; }
+      .pass { color: green; } .fail { color: red; }
+    </style>
+  </head>
+  <body>
+    <!--
+      Open this file in a browser (double-click it). No server is needed because it uses a
+      classic inline script, not modules. Each check below prints PASS or FAIL.
+      The checks click elements with element.click(), which fires a real bubbling click event.
+    -->
+    <h1>Bubbling, capture and delegation</h1>
+
+    <div id="container"><button id="btn">Click me!</button></div>
+
+    <div id="box"><video id="video"></video></div>
+
+    <div id="grid">
+      <div class="slot" data-slot-id="09:00"><span class="time">09:00</span> <b>Free</b></div>
+      <div class="slot" data-slot-id="09:30"><span class="time">09:30</span> <b>Free</b></div>
+    </div>
+
+    <form id="form"><input id="name" /><button id="submit" type="submit">Book</button></form>
+
+    <ol id="results"></ol>
+
+    <script>
+      const results = document.getElementById("results");
+      function check(label, actual, expected) {
+        const ok = JSON.stringify(actual) === JSON.stringify(expected);
+        const li = document.createElement("li");
+        li.className = ok ? "pass" : "fail";
+        li.textContent = `${ok ? "PASS" : "FAIL"}: ${label} → ${JSON.stringify(actual)}`;
+        results.append(li);
+      }
+
+      const container = document.getElementById("container");
+      const button = document.getElementById("btn");
+
+      // 1. Bubbling: innermost first, then each ancestor.
+      {
+        const log = [];
+        const handler = (e) => log.push(e.currentTarget.tagName);
+        const controller = new AbortController();
+        document.body.addEventListener("click", handler, { signal: controller.signal });
+        container.addEventListener("click", handler, { signal: controller.signal });
+        button.addEventListener("click", handler, { signal: controller.signal });
+        button.click();
+        controller.abort(); // remove all three
+        check("bubbling order", log, ["BUTTON", "DIV", "BODY"]);
+      }
+
+      // 2. Capture: outermost first (listeners registered with capture: true).
+      {
+        const log = [];
+        const handler = (e) => log.push(e.currentTarget.tagName);
+        const controller = new AbortController();
+        document.body.addEventListener("click", handler, { capture: true, signal: controller.signal });
+        container.addEventListener("click", handler, { capture: true, signal: controller.signal });
+        button.addEventListener("click", handler, { signal: controller.signal });
+        button.click();
+        controller.abort();
+        check("capture order", log, ["BODY", "DIV", "BUTTON"]);
+      }
+
+      // 3. target vs currentTarget.
+      {
+        const log = [];
+        const handler = (e) => log.push(`${e.target.tagName}/${e.currentTarget.tagName}`);
+        const controller = new AbortController();
+        container.addEventListener("click", handler, { signal: controller.signal });
+        button.addEventListener("click", handler, { signal: controller.signal });
+        button.click();
+        controller.abort();
+        check("target stays, currentTarget changes", log, ["BUTTON/BUTTON", "BUTTON/DIV"]);
+      }
+
+      // 4. The video-in-a-box bug and the stopPropagation fix.
+      {
+        const box = document.getElementById("box");
+        const video = document.getElementById("video");
+        let hidden = false;
+        let played = false;
+        const controller = new AbortController();
+        box.addEventListener("click", () => (hidden = true), { signal: controller.signal });
+        video.addEventListener("click", () => (played = true), { signal: controller.signal });
+        video.click();
+        check("without stopPropagation, clicking the video also hides the box", [played, hidden], [true, true]);
+        controller.abort();
+
+        hidden = false;
+        played = false;
+        const controller2 = new AbortController();
+        box.addEventListener("click", () => (hidden = true), { signal: controller2.signal });
+        video.addEventListener(
+          "click",
+          (e) => {
+            e.stopPropagation();
+            played = true;
+          },
+          { signal: controller2.signal },
+        );
+        video.click();
+        controller2.abort();
+        check("with stopPropagation, the box stays open", [played, hidden], [true, false]);
+
+        // Alternative: the box only closes when the click was on the box itself.
+        hidden = false;
+        const controller3 = new AbortController();
+        box.addEventListener(
+          "click",
+          (e) => {
+            if (e.target === e.currentTarget) hidden = true;
+          },
+          { signal: controller3.signal },
+        );
+        video.click();
+        const afterVideo = hidden;
+        box.click();
+        controller3.abort();
+        check("target === currentTarget check: video click keeps it open, box click closes", [afterVideo, hidden], [false, true]);
+      }
+
+      // 5. Delegation: one listener on the grid. e.target can be a child (span/b), so use closest().
+      {
+        const grid = document.getElementById("grid");
+        const picked = [];
+        const naive = [];
+        const controller = new AbortController();
+        grid.addEventListener(
+          "click",
+          (e) => {
+            naive.push(e.target.dataset.slotId ?? null); // breaks when you click the <b> inside
+            const slot = e.target.closest("[data-slot-id]");
+            if (!slot || !grid.contains(slot)) return;
+            picked.push(slot.dataset.slotId);
+          },
+          { signal: controller.signal },
+        );
+        grid.querySelector('[data-slot-id="09:30"] b').click(); // click the text, not the div
+        grid.querySelector('[data-slot-id="09:00"]').click();
+        controller.abort();
+        check("naive e.target.dataset misses inner clicks", naive, [null, "09:00"]);
+        check("closest() finds the slot either way", picked, ["09:30", "09:00"]);
+
+        // Delegation also covers elements added later.
+        const late = document.createElement("div");
+        late.className = "slot";
+        late.dataset.slotId = "10:00";
+        late.textContent = "10:00";
+        grid.append(late);
+        const laterPicks = [];
+        grid.addEventListener("click", (e) => {
+          const slot = e.target.closest("[data-slot-id]");
+          if (slot) laterPicks.push(slot.dataset.slotId);
+        }, { once: true });
+        late.click();
+        check("delegation works for elements added after setup", laterPicks, ["10:00"]);
+      }
+
+      // 6. preventDefault stops the form submitting; stopPropagation is a different thing.
+      {
+        const form = document.getElementById("form");
+        let defaultPrevented;
+        form.addEventListener("submit", (e) => {
+          if (document.getElementById("name").value === "") e.preventDefault();
+          defaultPrevented = e.defaultPrevented;
+        }, { once: true });
+        form.requestSubmit();
+        check("empty form: submission prevented", defaultPrevented, true);
+      }
+    </script>
+  </body>
+</html>

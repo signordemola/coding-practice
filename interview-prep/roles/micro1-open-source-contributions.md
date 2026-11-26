@@ -6,7 +6,7 @@
 
 **Before you start:** laptop on power, stable internet, mic and camera allowed, screen sharing allowed for Chrome (macOS: Privacy & Security → Screen & System Audio Recording).
 
-**Note:** the TypeScript answers in section 2 are checked against the TypeScript handbook. They move into module 02 (TypeScript) when it's built.
+**Note:** the TypeScript answers in section 2 are now covered in more depth, with compiler-checked examples, in [module 02 (TypeScript)](../modules/02-typescript/README.md): topics 03, 04, 05, 08, 09 and 10. Section 2 stays as a quick summary.
 
 
 **Interview:** AI interview, up to 31 min.

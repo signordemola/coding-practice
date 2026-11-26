@@ -1,0 +1,5 @@
+{
+  // Same strict settings as the lessons (../../../../tsconfig.json), applied to these examples.
+  "extends": "../../../../tsconfig.json",
+  "include": ["*.ts"]
+}

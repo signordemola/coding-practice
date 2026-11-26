@@ -1,0 +1,25 @@
+{
+  // Strict settings matching the repo's lessons, plus JSX. Unlike the lessons, these files
+  // contain JSX, which Node can't strip, so tsc compiles them into .build/ and Node runs that.
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "jsx": "react-jsx",
+    "types": ["node"],
+    "outDir": ".build",
+    "rootDir": ".",
+    "rewriteRelativeImportExtensions": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true
+  },
+  "include": ["*.ts", "*.tsx"]
+}
